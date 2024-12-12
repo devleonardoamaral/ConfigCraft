@@ -1,0 +1,426 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>configcraft.configmanager &mdash; Documentação ConfigCraft 0.0.1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=aec2756f"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=71a39b36"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="configcraft.configblueprint" href="configblueprint.html" />
+    <link rel="prev" title="Instalação" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ConfigCraft
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Começando</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#instanciando-o-configmanager">1. Instanciando o ConfigManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#adicionando-configblueprints">2. Adicionando ConfigBlueprints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#inicializando-o-gerenciador">3. Inicializando o gerenciador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#manipulando-valores-das-opcoes">4. Manipulando valores das opções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#arquivo-de-configuracao">5. Arquivo de configuração</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalação</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">configcraft.configmanager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configmanager.ConfigManager"><code class="docutils literal notranslate"><span class="pre">ConfigManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configblueprint.html">configcraft.configblueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configblueprint.html#configcraft.configblueprint.ConfigBlueprint"><code class="docutils literal notranslate"><span class="pre">ConfigBlueprint</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configerrors.html">configcraft.configerrors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigError"><code class="docutils literal notranslate"><span class="pre">ConfigError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileError"><code class="docutils literal notranslate"><span class="pre">ConfigFileError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">ConfigFileNotFoundError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFilePermissionError"><code class="docutils literal notranslate"><span class="pre">ConfigFilePermissionError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigIsADirectoryError"><code class="docutils literal notranslate"><span class="pre">ConfigIsADirectoryError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigOutOfRangeError"><code class="docutils literal notranslate"><span class="pre">ConfigOutOfRangeError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigSameFileError"><code class="docutils literal notranslate"><span class="pre">ConfigSameFileError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigFormatError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigFormatError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigTypeError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigTypeError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigValueError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigValueError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">Licença</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license.html#resumo-da-licenca-mit">Resumo da Licença MIT</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ConfigCraft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">configcraft.configmanager</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/configmanager.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-configcraft.configmanager">
+<span id="configcraft-configmanager"></span><h1>configcraft.configmanager<a class="headerlink" href="#module-configcraft.configmanager" title="Link para este cabeçalho"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configmanager.</span></span><span class="sig-name descname"><span class="pre">ConfigManager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigManager" title="Link para esta definição"></a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutableMapping</span></code></p>
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.add_blueprint">
+<span class="sig-name descname"><span class="pre">add_blueprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blueprint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="configblueprint.html#configcraft.configblueprint.ConfigBlueprint" title="configcraft.configblueprint.ConfigBlueprint"><span class="pre">ConfigBlueprint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.add_blueprint" title="Link para esta definição"></a></dt>
+<dd><p>Adiciona um novo blueprint à instância do gerenciador de configurações.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>blueprint</strong> (<a class="reference internal" href="configblueprint.html#configcraft.configblueprint.ConfigBlueprint" title="configcraft.configblueprint.ConfigBlueprint"><em>ConfigBlueprint</em></a>) – O blueprint a ser adicionado.</p>
+</dd>
+<dt class="field-even">Levanta<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> – Ocorre quando a instância já foi inicializada. É importante adicionar todos os blueprints
+    antes da inicialização completa da instância.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.description">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.description" title="Link para esta definição"></a></dt>
+<dd><p>Propriedade para acessar o texto que é escrito logo abaixo do cabeçalho nos arquivos de configuração. Por
+padrão é definido um texto explicativo de como preencher cada tipo de valor e como utilizar o arquivo de
+configuração de forma simples e intuitiva.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O texto da descrição.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.directory">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directory</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.directory" title="Link para esta definição"></a></dt>
+<dd><p>Propriedade para acessar o caminho do diretório onde os perfis de configuração são armazenados. Não deve ser
+chamado enquanto a instância não for inicializada com o método <cite>initialize()</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O caminho do diretório de perfis de configuração.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path</p>
+</dd>
+<dt class="field-odd">Levanta<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – Ocorre quando a instância não é inicializada corretamente.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.encoding">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encoding</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.encoding" title="Link para esta definição"></a></dt>
+<dd><p>Propriedade para acessar o tipo de codificação que será utilizada em operações de leitura e escrita do
+arquivo de configuração.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O nome do tipo de codificação.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.get_blueprint">
+<span class="sig-name descname"><span class="pre">get_blueprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.get_blueprint" title="Link para esta definição"></a></dt>
+<dd><p>Obtém um blueprint específico dentro de uma seção e opção. Se a seção e a opção existirem nos blueprints, o
+método retorna o blueprint associado à opção. Caso contrário, retorna <cite>None</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>section</strong> (<em>str</em>) – O nome da seção onde o blueprint está definido.</p></li>
+<li><p><strong>option</strong> (<em>str</em>) – O nome da opção dentro da seção cuja blueprint será retornada.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Retorna<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Retorna o blueprint associado à opção,</dt><dd><p>ou <cite>None</cite> se a seção ou a opção não existirem.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[<a class="reference internal" href="configblueprint.html#configcraft.configblueprint.ConfigBlueprint" title="configcraft.configblueprint.ConfigBlueprint">ConfigBlueprint</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.get_blueprint_options">
+<span class="sig-name descname"><span class="pre">get_blueprint_options</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.get_blueprint_options" title="Link para esta definição"></a></dt>
+<dd><p>Retorna todas as opções associadas a uma seção específica nos blueprints, ou <cite>None</cite> se a seção não estiver
+definida.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>section</strong> (<em>str</em>) – O nome da seção cujas opções são solicitadas.</p>
+</dd>
+<dt class="field-even">Retorna<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Um dicionário contendo as opções da seção se a seção existir, ou <cite>None</cite> se a seção não</dt><dd><p>estiver definida.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.has_blueprint_option">
+<span class="sig-name descname"><span class="pre">has_blueprint_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.has_blueprint_option" title="Link para esta definição"></a></dt>
+<dd><p>Verifica se uma opção específica está definida dentro de uma seção nos blueprints. Retorna <cite>True</cite> se a opção
+for encontrada na seção, <cite>False</cite> se a seção existir mas a opção não, e <cite>None</cite> se a seção não existir.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>section</strong> (<em>str</em>) – O nome da seção onde a opção será verificada.</p></li>
+<li><p><strong>option</strong> (<em>str</em>) – O nome da opção a ser verificada dentro da seção.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Retorna<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>Retorna <cite>True</cite> se a opção existe na seção, <cite>False</cite> se a opção não existir, ou <cite>None</cite> se a</dt><dd><p>seção não existir.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Optional[bool]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.has_blueprint_section">
+<span class="sig-name descname"><span class="pre">has_blueprint_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.has_blueprint_section" title="Link para esta definição"></a></dt>
+<dd><p>Verifica se a seção fornecida está presente na estrutura interna de blueprints, retornando <cite>True</cite> se a seção
+for encontrada, e <cite>False</cite> caso contrário.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>section</strong> (<em>str</em>) – O nome da seção a ser verificada nos blueprints.</p>
+</dd>
+<dt class="field-even">Retorna<span class="colon">:</span></dt>
+<dd class="field-even"><p>Retorna <cite>True</cite> se a seção está definida, caso contrário, <cite>False</cite>.</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.header">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">header</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.header" title="Link para esta definição"></a></dt>
+<dd><p>Propriedade para acessar o cabeçalho que é escrito na primeira linha nos arquivos de configuração.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O texto do cabeçalho.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.initialize">
+<span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'utf_8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.initialize" title="Link para esta definição"></a></dt>
+<dd><p>Inicializa o gerenciador de configurações.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>profile</strong> (<em>str</em>) – O nome do perfil que será utilizado pelo gerenciador de configurações.</p></li>
+<li><p><strong>path</strong> (<em>Union</em><em>[</em><em>Path</em><em>, </em><em>str</em><em>]</em>) – O diretório onde os perfis de configuração serão armazenados.</p></li>
+<li><p><strong>encoding</strong> (<em>str</em>) – Codificação a ser utilizada nas operações de leitura e escrita do arquivo de configuração.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Levanta<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>RuntimeError</strong> – Se não houver nenhum blueprint definido ou se o diretório de configuração não existir e não
+    puder ser criado.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileError" title="configcraft.configerrors.ConfigFileError"><strong>ConfigFileError</strong></a> – Se houver falha ao carregar ou processar dados de configuração.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.load_config">
+<span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.load_config" title="Link para esta definição"></a></dt>
+<dd><p>Lê o arquivo utilizando o Lock de threading para evitar que o arquivo seja sobrescrito durante a leitura.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.path" title="Link para esta definição"></a></dt>
+<dd><p>Propriedade para acessar o caminho do arquivo de configuração do perfil inicializado atualmente. Não deve ser
+chamado enquanto a instância não for inicializada com o método <cite>initialize()</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O caminho do arquivo de configuração.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Path</p>
+</dd>
+<dt class="field-odd">Levanta<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – Ocorre quando a instância não é inicializada corretamente.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.profile">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">profile</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.profile" title="Link para esta definição"></a></dt>
+<dd><p>Propriedade para acessar o nome do perfil inicializado. Não deve ser chamado enquanto a instância não for
+inicializada com o método <cite>initialize()</cite>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O nome do perfil atual.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Levanta<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – Ocorre quando a instância não é inicializada corretamente.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.save_config">
+<span class="sig-name descname"><span class="pre">save_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.save_config" title="Link para esta definição"></a></dt>
+<dd><p>Salva os dados de configuração de maneira segura, garantindo
+compatibilidade com ambientes multithread.</p>
+<p>Este método utiliza um bloqueio (<cite>threading.Lock</cite>) para assegurar que
+apenas uma thread possa executar a operação de salvamento por vez,
+evitando condições de corrida que possam corromper o arquivo de
+configuração.</p>
+<p>A lógica de salvamento delega a operação de escrita ao método
+interno <cite>_write_config</cite>, que realiza a escrita atômica no arquivo de
+configuração. Isso é feito utilizando um arquivo temporário, garantindo
+maior segurança e evitando perda de dados em caso de falhas inesperadas.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Levanta<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigSameFileError" title="configcraft.configerrors.ConfigSameFileError"><strong>configerrors.ConfigSameFileError</strong></a> – Levantada se o arquivo temporário e o arquivo de destino forem
+    o mesmo, o que indicaria uma falha na lógica de manipulação de
+    arquivos temporários.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigIsADirectoryError" title="configcraft.configerrors.ConfigIsADirectoryError"><strong>configerrors.ConfigIsADirectoryError</strong></a> – Levantada se o caminho especificado para o arquivo de
+    configuração for um diretório ao invés de um arquivo,
+    impossibilitando a escrita.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileNotFoundError" title="configcraft.configerrors.ConfigFileNotFoundError"><strong>configerrors.ConfigFileNotFoundError</strong></a> – Levantada quando o caminho especificado para o arquivo de
+    configuração não é encontrado, indicando que o caminho de
+    destino ainda não existe.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFilePermissionError" title="configcraft.configerrors.ConfigFilePermissionError"><strong>configerrors.ConfigFilePermissionError</strong></a> – Levantada quando a aplicação não possui permissões suficientes
+    para escrever no arquivo ou substituir o arquivo de
+    configuração existente.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileError" title="configcraft.configerrors.ConfigFileError"><strong>configerrors.ConfigFileError</strong></a> – Levantada para qualquer outro erro inesperado ocorrido durante
+    a escrita no arquivo, permitindo uma abordagem genérica para
+    tratamento de erros fora dos cenários comuns. As execeções
+    específicias citadas acima herdam de <em>ConfigFileError</em>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigManager.set_description">
+<span class="sig-name descname"><span class="pre">set_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigManager.set_description" title="Link para esta definição"></a></dt>
+<dd><p>Setter para alterar o texto que é escrito logo abaixo do cabeçalho nos arquivos de configuração.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – O novo texto de descrição.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2024, Leonardo Amaral. Sob a Licença MIT.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

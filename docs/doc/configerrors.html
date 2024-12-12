@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>configcraft.configerrors &mdash; Documentação ConfigCraft 0.0.1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=aec2756f"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=71a39b36"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="Licença" href="license.html" />
+    <link rel="prev" title="configcraft.configblueprint" href="configblueprint.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ConfigCraft
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Começando</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#instanciando-o-configmanager">1. Instanciando o ConfigManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#adicionando-configblueprints">2. Adicionando ConfigBlueprints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#inicializando-o-gerenciador">3. Inicializando o gerenciador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#manipulando-valores-das-opcoes">4. Manipulando valores das opções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#arquivo-de-configuracao">5. Arquivo de configuração</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configmanager.html">configcraft.configmanager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configmanager.html#configcraft.configmanager.ConfigManager"><code class="docutils literal notranslate"><span class="pre">ConfigManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configblueprint.html">configcraft.configblueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configblueprint.html#configcraft.configblueprint.ConfigBlueprint"><code class="docutils literal notranslate"><span class="pre">ConfigBlueprint</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">configcraft.configerrors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configerrors.ConfigError"><code class="docutils literal notranslate"><span class="pre">ConfigError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configerrors.ConfigFileError"><code class="docutils literal notranslate"><span class="pre">ConfigFileError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configerrors.ConfigFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">ConfigFileNotFoundError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configerrors.ConfigFilePermissionError"><code class="docutils literal notranslate"><span class="pre">ConfigFilePermissionError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configerrors.ConfigIsADirectoryError"><code class="docutils literal notranslate"><span class="pre">ConfigIsADirectoryError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configerrors.ConfigOutOfRangeError"><code class="docutils literal notranslate"><span class="pre">ConfigOutOfRangeError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configerrors.ConfigSameFileError"><code class="docutils literal notranslate"><span class="pre">ConfigSameFileError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configerrors.InvalidConfigError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configerrors.InvalidConfigFormatError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigFormatError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configerrors.InvalidConfigTypeError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigTypeError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configerrors.InvalidConfigValueError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigValueError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">Licença</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license.html#resumo-da-licenca-mit">Resumo da Licença MIT</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ConfigCraft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">configcraft.configerrors</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/configerrors.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-configcraft.configerrors">
+<span id="configcraft-configerrors"></span><h1>configcraft.configerrors<a class="headerlink" href="#module-configcraft.configerrors" title="Link para este cabeçalho"></a></h1>
+<p>Este módulo define exceções personalizadas para gerenciamento de erros
+específicos relacionados à configuração. As exceções são agrupadas em classes
+hierárquicas que permitem capturar e tratar diferentes tipos de erros.</p>
+<dl class="py exception">
+<dt class="sig sig-object py" id="configcraft.configerrors.ConfigError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configerrors.</span></span><span class="sig-name descname"><span class="pre">ConfigError</span></span><a class="headerlink" href="#configcraft.configerrors.ConfigError" title="Link para esta definição"></a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">Exception</span></code></p>
+<p>Exceção base para todas as exceções relacionadas à configuração.</p>
+<p>Esta é a classe base para todas as exceções que ocorrem no contexto de
+configurações dentro do sistema. Qualquer erro relacionado ao processamento,
+leitura, ou formatação de configurações pode ser derivado dessa classe.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="configcraft.configerrors.ConfigFileError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configerrors.</span></span><span class="sig-name descname"><span class="pre">ConfigFileError</span></span><a class="headerlink" href="#configcraft.configerrors.ConfigFileError" title="Link para esta definição"></a></dt>
+<dd><p>Base: <a class="reference internal" href="#configcraft.configerrors.ConfigError" title="configcraft.configerrors.ConfigError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">OSError</span></code></p>
+<p>Exceção base para erros de sistema operacional relacionados a arquivos e
+diretórios de configuração.</p>
+<p>Essa exceção é levantada quando ocorre um erro ao tentar acessar, criar, ou
+manipular arquivos e diretórios de configuração, como falhas ao tentar
+abrir um arquivo de configuração ou acessar diretórios de configuração.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="configcraft.configerrors.ConfigFileNotFoundError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configerrors.</span></span><span class="sig-name descname"><span class="pre">ConfigFileNotFoundError</span></span><a class="headerlink" href="#configcraft.configerrors.ConfigFileNotFoundError" title="Link para esta definição"></a></dt>
+<dd><p>Base: <a class="reference internal" href="#configcraft.configerrors.ConfigFileError" title="configcraft.configerrors.ConfigFileError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigFileError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">FileNotFoundError</span></code></p>
+<p>Ocorre quando o arquivo de configuração não é encontrado.</p>
+<p>Essa exceção é levantada quando um arquivo de configuração ou diretório
+necessário não pode ser encontrado no caminho especificado.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="configcraft.configerrors.ConfigFilePermissionError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configerrors.</span></span><span class="sig-name descname"><span class="pre">ConfigFilePermissionError</span></span><a class="headerlink" href="#configcraft.configerrors.ConfigFilePermissionError" title="Link para esta definição"></a></dt>
+<dd><p>Base: <a class="reference internal" href="#configcraft.configerrors.ConfigFileError" title="configcraft.configerrors.ConfigFileError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigFileError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">PermissionError</span></code></p>
+<p>Ocorre quando não há permissões suficientes para a operação em um arquivo
+de configuração.</p>
+<p>Essa exceção é levantada quando uma tentativa de ler, escrever ou
+modificar um arquivo de configuração é impedida devido a permissões
+insuficientes.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="configcraft.configerrors.ConfigIsADirectoryError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configerrors.</span></span><span class="sig-name descname"><span class="pre">ConfigIsADirectoryError</span></span><a class="headerlink" href="#configcraft.configerrors.ConfigIsADirectoryError" title="Link para esta definição"></a></dt>
+<dd><p>Base: <a class="reference internal" href="#configcraft.configerrors.ConfigFileError" title="configcraft.configerrors.ConfigFileError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigFileError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">IsADirectoryError</span></code></p>
+<p>Ocorre quando o caminho de destino é um diretório, mas era esperado um
+arquivo.</p>
+<p>Essa exceção é levantada quando uma operação de arquivo é realizada em um
+diretório quando um arquivo era esperado como destino.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="configcraft.configerrors.ConfigOutOfRangeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configerrors.</span></span><span class="sig-name descname"><span class="pre">ConfigOutOfRangeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_or_msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">limit_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Literal</span><span class="p"><span class="pre">[</span></span><span class="s"><span class="pre">'min'</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="s"><span class="pre">'max'</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">range_limit</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configerrors.ConfigOutOfRangeError" title="Link para esta definição"></a></dt>
+<dd><p>Base: <a class="reference internal" href="#configcraft.configerrors.InvalidConfigValueError" title="configcraft.configerrors.InvalidConfigValueError"><code class="xref py py-class docutils literal notranslate"><span class="pre">InvalidConfigValueError</span></code></a></p>
+<p>Ocorre quando um valor de configuração está fora do intervalo esperado.</p>
+<p>Essa exceção é levantada quando o valor de uma configuração está além dos
+limites definidos, como valores que ultrapassam os limites mínimo ou máximo
+permitidos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value_or_msg</strong> (<em>Any</em>) – O valor fornecido ou uma mensagem de erro.</p></li>
+<li><p><strong>section</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – A seção onde o erro ocorreu.</p></li>
+<li><p><strong>option</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – A opção da configuração com erro.</p></li>
+<li><p><strong>limit_name</strong> (<em>Optional</em><em>[</em><em>Literal</em><em>[</em><em>&quot;min&quot;</em><em>, </em><em>&quot;max&quot;</em><em>]</em><em>]</em>) – O limite (mínimo ou
+máximo) que foi violado.</p></li>
+<li><p><strong>range_limit</strong> (<em>Optional</em><em>[</em><em>int</em><em>]</em>) – O limite de intervalo para a configuração.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="configcraft.configerrors.ConfigSameFileError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configerrors.</span></span><span class="sig-name descname"><span class="pre">ConfigSameFileError</span></span><a class="headerlink" href="#configcraft.configerrors.ConfigSameFileError" title="Link para esta definição"></a></dt>
+<dd><p>Base: <a class="reference internal" href="#configcraft.configerrors.ConfigFileError" title="configcraft.configerrors.ConfigFileError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigFileError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">SameFileError</span></code></p>
+<p>Ocorre quando o caminho de destino de uma operação de cópia é o mesmo que o
+de origem.</p>
+<p>Essa exceção é levantada ao tentar copiar um arquivo para si mesmo, ou seja,
+quando o arquivo de destino e o de origem são o mesmo.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="configcraft.configerrors.InvalidConfigError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configerrors.</span></span><span class="sig-name descname"><span class="pre">InvalidConfigError</span></span><a class="headerlink" href="#configcraft.configerrors.InvalidConfigError" title="Link para esta definição"></a></dt>
+<dd><p>Base: <a class="reference internal" href="#configcraft.configerrors.ConfigError" title="configcraft.configerrors.ConfigError"><code class="xref py py-class docutils literal notranslate"><span class="pre">ConfigError</span></code></a></p>
+<p>Exceção base para todas as exceções de valor e tipo de configuração
+inválidos.</p>
+<p>Essa classe base é usada para erros relacionados a valores ou tipos de
+dados inválidos dentro da configuração, como quando um valor não
+corresponde ao esperado.</p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="configcraft.configerrors.InvalidConfigFormatError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configerrors.</span></span><span class="sig-name descname"><span class="pre">InvalidConfigFormatError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_or_msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">patterns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Iterable</span><span class="p"><span class="pre">[</span></span><span class="pre">Pattern</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configerrors.InvalidConfigFormatError" title="Link para esta definição"></a></dt>
+<dd><p>Base: <a class="reference internal" href="#configcraft.configerrors.InvalidConfigError" title="configcraft.configerrors.InvalidConfigError"><code class="xref py py-class docutils literal notranslate"><span class="pre">InvalidConfigError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+<p>Ocorre quando o valor de configuração não tem um formato válido.</p>
+<p>Essa exceção é levantada quando um valor fornecido para uma configuração
+não segue o formato esperado, como no caso de padrões de expressão regular
+que não correspondem.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value_or_msg</strong> (<em>Any</em>) – O valor fornecido ou uma mensagem de erro.</p></li>
+<li><p><strong>section</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – A seção onde o erro ocorreu.</p></li>
+<li><p><strong>option</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – A opção da configuração com erro.</p></li>
+<li><p><strong>patterns</strong> (<em>Optional</em><em>[</em><em>Iterable</em><em>[</em><em>re.Pattern</em><em>]</em><em>]</em>) – A lista de padrões de
+expressão regular esperados.</p></li>
+<li><p><strong>extra</strong> (<em>str</em>) – Mensagem extra adicional.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="configcraft.configerrors.InvalidConfigTypeError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configerrors.</span></span><span class="sig-name descname"><span class="pre">InvalidConfigTypeError</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value_or_msg</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">type</span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configerrors.InvalidConfigTypeError" title="Link para esta definição"></a></dt>
+<dd><p>Base: <a class="reference internal" href="#configcraft.configerrors.InvalidConfigError" title="configcraft.configerrors.InvalidConfigError"><code class="xref py py-class docutils literal notranslate"><span class="pre">InvalidConfigError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">TypeError</span></code></p>
+<p>Ocorre quando o tipo de um valor de configuração não é válido.</p>
+<p>Essa exceção é levantada quando um valor fornecido para uma configuração
+não corresponde ao tipo esperado. A mensagem de erro pode incluir a seção e
+opção da configuração, o tipo atual e o tipo esperado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>value_or_msg</strong> (<em>Any</em>) – O valor fornecido ou uma mensagem de erro.</p></li>
+<li><p><strong>section</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – A seção onde o erro ocorreu.</p></li>
+<li><p><strong>option</strong> (<em>Optional</em><em>[</em><em>str</em><em>]</em>) – A opção da configuração com erro.</p></li>
+<li><p><strong>types</strong> (<em>Optional</em><em>[</em><em>set</em><em>[</em><em>type</em><em>]</em><em>]</em>) – Os tipos esperados para o valor da
+configuração.</p></li>
+<li><p><strong>extra</strong> (<em>str</em>) – Mensagem extra adicional.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="configcraft.configerrors.InvalidConfigValueError">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configerrors.</span></span><span class="sig-name descname"><span class="pre">InvalidConfigValueError</span></span><a class="headerlink" href="#configcraft.configerrors.InvalidConfigValueError" title="Link para esta definição"></a></dt>
+<dd><p>Base: <a class="reference internal" href="#configcraft.configerrors.InvalidConfigError" title="configcraft.configerrors.InvalidConfigError"><code class="xref py py-class docutils literal notranslate"><span class="pre">InvalidConfigError</span></code></a>, <code class="xref py py-class docutils literal notranslate"><span class="pre">ValueError</span></code></p>
+<p>Ocorre quando o valor de uma configuração não é válido.</p>
+<p>Essa exceção é levantada quando um valor fornecido para uma configuração
+não é adequado, podendo ser incorreto ou fora do esperado.</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2024, Leonardo Amaral. Sob a Licença MIT.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,286 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Começando &mdash; Documentação ConfigCraft 0.0.1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=aec2756f"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=71a39b36"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="Instalação" href="installation.html" />
+    <link rel="prev" title="ConfigCraft" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ConfigCraft
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Começando</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#instanciando-o-configmanager">1. Instanciando o ConfigManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adicionando-configblueprints">2. Adicionando ConfigBlueprints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#inicializando-o-gerenciador">3. Inicializando o gerenciador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#manipulando-valores-das-opcoes">4. Manipulando valores das opções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arquivo-de-configuracao">5. Arquivo de configuração</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configmanager.html">configcraft.configmanager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configmanager.html#configcraft.configmanager.ConfigManager"><code class="docutils literal notranslate"><span class="pre">ConfigManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configblueprint.html">configcraft.configblueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configblueprint.html#configcraft.configblueprint.ConfigBlueprint"><code class="docutils literal notranslate"><span class="pre">ConfigBlueprint</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configerrors.html">configcraft.configerrors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigError"><code class="docutils literal notranslate"><span class="pre">ConfigError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileError"><code class="docutils literal notranslate"><span class="pre">ConfigFileError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">ConfigFileNotFoundError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFilePermissionError"><code class="docutils literal notranslate"><span class="pre">ConfigFilePermissionError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigIsADirectoryError"><code class="docutils literal notranslate"><span class="pre">ConfigIsADirectoryError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigOutOfRangeError"><code class="docutils literal notranslate"><span class="pre">ConfigOutOfRangeError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigSameFileError"><code class="docutils literal notranslate"><span class="pre">ConfigSameFileError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigFormatError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigFormatError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigTypeError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigTypeError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigValueError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigValueError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">Licença</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license.html#resumo-da-licenca-mit">Resumo da Licença MIT</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ConfigCraft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Começando</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/examples.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="comecando">
+<h1>Começando<a class="headerlink" href="#comecando" title="Link para este cabeçalho"></a></h1>
+<p>Este exemplo demonstra como usar o <em>ConfigManager</em> do módulo <em>configcraft</em> para
+gerenciar configurações. O código abaixo mostra como adicionar uma
+<em>ConfigBlueprint</em> de configuração, que define uma seção, uma opção e o tipo de
+dado esperado, além de permitir valores padrão e descrições.</p>
+<section id="instanciando-o-configmanager">
+<h2>1. Instanciando o ConfigManager<a class="headerlink" href="#instanciando-o-configmanager" title="Link para este cabeçalho"></a></h2>
+<p>Para instanciar o gerenciador de configurações, é necessário atribuir um nome à
+instância do <em>ConfigManager</em>, uma vez que ele é implementado como um
+<em>PolySingleton</em>. Isso garante que, para cada nome fornecido, apenas uma
+instância do gerenciador será criada.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">configcraft</span>
+
+<span class="c1"># Cria uma instância chamada &quot;app&quot;</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">configcraft</span><span class="o">.</span><span class="n">ConfigManager</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="adicionando-configblueprints">
+<h2>2. Adicionando ConfigBlueprints<a class="headerlink" href="#adicionando-configblueprints" title="Link para este cabeçalho"></a></h2>
+<p>Depois de instanciar o <em>ConfigManager</em>, o próximo passo é adicionar um
+<em>ConfigBlueprint</em> à ele. Um <em>ConfigBlueprint</em> define as opções de configuração
+que serão usadas no gerenciador, incluindo a seção, a opção específica dentro
+dessa seção, os tipos de dados esperados, uma descrição da opção e um valor
+padrão, entre outros parâmetros.</p>
+<p>No exemplo abaixo, mostramos como adicionar um <em>ConfigBlueprint</em> ao
+<em>ConfigManager</em>, onde:</p>
+<ul class="simple">
+<li><p><strong>section</strong>: Define o nome da seção onde a opção será armazenada.</p></li>
+<li><p><strong>option</strong>: Define o nome da opção dentro da seção.</p></li>
+<li><p><strong>types</strong>: Especifica os tipos de dados aceitos para a opção, podendo incluir tipos como <cite>str</cite> e <cite>type(None)</cite> (que torna a opção opcional).</p></li>
+<li><p><strong>description</strong>: Fornece uma descrição explicativa sobre a opção de configuração.</p></li>
+<li><p><strong>default</strong>: Define o valor padrão para a opção de configuração.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adiciona o blueprint ao gerenciador de configurações</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">add_blueprint</span><span class="p">(</span>
+    <span class="n">configcraft</span><span class="o">.</span><span class="n">ConfigBlueprint</span><span class="p">(</span>
+        <span class="n">section</span><span class="o">=</span><span class="s2">&quot;nome_seção&quot;</span><span class="p">,</span>
+        <span class="n">option</span><span class="o">=</span><span class="s2">&quot;nome_opção&quot;</span><span class="p">,</span>
+        <span class="n">types</span><span class="o">=</span><span class="p">{</span><span class="nb">str</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)},</span>  <span class="c1"># type(None) torna a opção opcional</span>
+        <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Opção de exemplo 1.&quot;</span><span class="p">,</span>
+        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;Valor de Exemplo&quot;</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="inicializando-o-gerenciador">
+<h2>3. Inicializando o gerenciador<a class="headerlink" href="#inicializando-o-gerenciador" title="Link para este cabeçalho"></a></h2>
+<p>Após adicionar todos os <em>ConfigBlueprints</em> necessários, é importante completar
+a inicialização da instância do gerenciador de configurações com o método
+<em>ìnitialize</em> para poder utilizar e gerenciar configurações.</p>
+<p>Durante esse processo, o gerenciador carrega as configurações a partir do
+arquivo de configuração - ou gera o arquivo a partir dos ConfigBlueprints com
+os valores padrão definidos, caso o arquivo ainda não exista.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="s2">&quot;dev&quot;</span><span class="p">,</span> <span class="s2">&quot;config&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf_8&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>O ConfigManager irá procurar pelo arquivo “dev.ini” dentro do diretório
+“./config”.</p>
+<ul class="simple">
+<li><p><strong>Caso seja encontrado:</strong> as configurações são carregadas com a codificação “utf_8” e validados através dos blueprints.</p></li>
+<li><p><strong>Caso não seja encontrado:</strong> o arquivo será gerado a partir da especificação dos ConfigBlueprints definidos anteriormente.</p></li>
+</ul>
+</div>
+</section>
+<section id="manipulando-valores-das-opcoes">
+<h2>4. Manipulando valores das opções<a class="headerlink" href="#manipulando-valores-das-opcoes" title="Link para este cabeçalho"></a></h2>
+<p>Depois de inicializar o gerenciador, você pode acessar ou alterar os valores
+das opções configuradas. As opções podem ser manipuladas como se fossem chaves
+de um dicionário através de uma tupla, sendo o primeiro valor o nome da seção e
+o segundo o nome da opção.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Acessa o valor da opção e imprime na tela</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;nome_seção&quot;</span><span class="p">,</span> <span class="s2">&quot;nome_opção&quot;</span><span class="p">])</span>
+<span class="c1"># Saída: &#39;Valor de Exemplo&#39;</span>
+
+<span class="c1"># Altera o valor da opção</span>
+<span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;nome_seção&quot;</span><span class="p">,</span> <span class="s2">&quot;nome_opção&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Novo Valor&quot;</span>
+
+<span class="c1"># Acessa o valor da opção e imprime na tela</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;nome_seção&quot;</span><span class="p">,</span> <span class="s2">&quot;nome_opção&quot;</span><span class="p">])</span>
+<span class="c1"># Saída: &#39;Novo Valor&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="arquivo-de-configuracao">
+<h2>5. Arquivo de configuração<a class="headerlink" href="#arquivo-de-configuracao" title="Link para este cabeçalho"></a></h2>
+<p>O arquivo de saída é gerado no caminho definido no método <em>initialize</em> através
+do nome do perfil “dev” - não é necessário incluir a extensão .ini - e o
+diretório de destino “./config”.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="c1"># ConfigCraft - Version: 0.0.1</span>
+
+<span class="c1"># COMO PREENCHER OS VALORES:</span>
+<span class="c1">#</span>
+<span class="c1"># 1. Texto:</span>
+<span class="c1">#    - Representado por uma sequência de caracteres entre aspas duplas.</span>
+<span class="c1">#    - Exemplo: &quot;Exemplo de texto&quot;.</span>
+<span class="c1">#</span>
+<span class="c1"># 2. Inteiro:</span>
+<span class="c1">#    - Um número inteiro (sem parte decimal).</span>
+<span class="c1">#    - Exemplo: 123, -456.</span>
+<span class="c1">#</span>
+<span class="c1"># 3. Decimal:</span>
+<span class="c1">#    - Um número que inclui uma parte decimal, sendo a separação feita com ponto (não vírgula).</span>
+<span class="c1">#    - Exemplo: 3.14, -0.5.</span>
+<span class="c1">#</span>
+<span class="c1"># 4. Booleano:</span>
+<span class="c1">#    - Valor lógico que pode ser true (verdadeiro) ou false (falso).</span>
+<span class="c1">#    - Atenção: Os valores são case-sensitive (sensíveis a maiúsculas e minúsculas), ou seja, True e False não são</span>
+<span class="c1">#    válidos.</span>
+<span class="c1">#    - Exemplo: true, false.</span>
+<span class="c1">#</span>
+<span class="c1"># 5. Lista:</span>
+<span class="c1">#    - Uma coleção de valores entre colchetes, com os itens separados por vírgula.</span>
+<span class="c1">#    - Os valores podem ser de qualquer tipo, incluindo texto, inteiros, ou outros tipos.</span>
+<span class="c1">#    - Exemplo: [1, 2, 3], [&quot;maçã&quot;, &quot;banana&quot;, &quot;morango&quot;].</span>
+<span class="c1">#</span>
+<span class="c1"># 6. Dicionário:</span>
+<span class="c1">#    - Uma coleção de pares chave-valor, onde cada chave é associada a um valor. Os valores são separados por vírgula e as</span>
+<span class="c1">#    chaves e valores são separados por dois pontos :.</span>
+<span class="c1">#    - Exemplo: {&quot;chave1&quot;: &quot;valor1&quot;, &quot;chave2&quot;: 42}.</span>
+<span class="c1">#</span>
+<span class="c1"># 7. Nulo:</span>
+<span class="c1">#    - Valor vazio. Para indicar ausência de valor, deixe a configuração sem nenhum valor depois do sinal = ou use a</span>
+<span class="c1">#    palavra-chave null.</span>
+<span class="c1">#    - Exemplo: parametro = ou parametro = null.</span>
+
+<span class="k">[nome_seção]</span>
+<span class="c1"># Configuração de teste.</span>
+<span class="c1"># Tipo: Texto</span>
+<span class="na">nome_opção</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">[</span>
+<span class="w">    </span><span class="na">&quot;Novo Valor&quot;</span>
+<span class="na">]</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>O texto padrão de documentação padrão após o cabeçalho do arquivo de
+configuração pode ser alterado através do método <em>set_description</em> no
+ConfigManager.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="s2">&quot;Nova descrição&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2024, Leonardo Amaral. Sob a Licença MIT.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

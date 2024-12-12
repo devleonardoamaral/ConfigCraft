@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt-BR" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>configcraft.configblueprint &mdash; Documentação ConfigCraft 0.0.1</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=aec2756f"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=71a39b36"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="configcraft.configerrors" href="configerrors.html" />
+    <link rel="prev" title="configcraft.configmanager" href="configmanager.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ConfigCraft
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Pesquisar documentos" aria-label="Pesquisar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Começando</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#instanciando-o-configmanager">1. Instanciando o ConfigManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#adicionando-configblueprints">2. Adicionando ConfigBlueprints</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#inicializando-o-gerenciador">3. Inicializando o gerenciador</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#manipulando-valores-das-opcoes">4. Manipulando valores das opções</a></li>
+<li class="toctree-l2"><a class="reference internal" href="examples.html#arquivo-de-configuracao">5. Arquivo de configuração</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Instalação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configmanager.html">configcraft.configmanager</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configmanager.html#configcraft.configmanager.ConfigManager"><code class="docutils literal notranslate"><span class="pre">ConfigManager</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">configcraft.configblueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configcraft.configblueprint.ConfigBlueprint"><code class="docutils literal notranslate"><span class="pre">ConfigBlueprint</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configerrors.html">configcraft.configerrors</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigError"><code class="docutils literal notranslate"><span class="pre">ConfigError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileError"><code class="docutils literal notranslate"><span class="pre">ConfigFileError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileNotFoundError"><code class="docutils literal notranslate"><span class="pre">ConfigFileNotFoundError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFilePermissionError"><code class="docutils literal notranslate"><span class="pre">ConfigFilePermissionError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigIsADirectoryError"><code class="docutils literal notranslate"><span class="pre">ConfigIsADirectoryError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigOutOfRangeError"><code class="docutils literal notranslate"><span class="pre">ConfigOutOfRangeError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigSameFileError"><code class="docutils literal notranslate"><span class="pre">ConfigSameFileError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigFormatError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigFormatError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigTypeError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigTypeError</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigValueError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigValueError</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">Licença</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="license.html#resumo-da-licenca-mit">Resumo da Licença MIT</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Menu de navegação móvel" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ConfigCraft</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Navegação da página">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">configcraft.configblueprint</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/configblueprint.rst.txt" rel="nofollow"> Ver código-fonte da página</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-configcraft.configblueprint">
+<span id="configcraft-configblueprint"></span><h1>configcraft.configblueprint<a class="headerlink" href="#module-configcraft.configblueprint" title="Link para este cabeçalho"></a></h1>
+<p>Esse módulo fornece a classe <a class="reference internal" href="#configcraft.configblueprint.ConfigBlueprint" title="configcraft.configblueprint.ConfigBlueprint"><code class="xref py py-class docutils literal notranslate"><span class="pre">configcraft.configblueprint.ConfigBlueprint</span></code></a>.
+Que é responsável por definir a estrutura de configuração.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configblueprint.</span></span><span class="sig-name descname"><span class="pre">ConfigBlueprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">type</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">description</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">items_types</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">set</span><span class="p"><span class="pre">[</span></span><span class="pre">type</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Pattern</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint" title="Link para esta definição"></a></dt>
+<dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Classe responsável por definir a estrutura de cada opção de configuração
+e realizar validações sobre os valores passados para essas opções</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint.default">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">default</span></span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint.default" title="Link para esta definição"></a></dt>
+<dd><p>Retorna o valor padrão da configuração.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O valor padrão.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Any</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint.description">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint.description" title="Link para esta definição"></a></dt>
+<dd><p>Retorna o texto de descrição da opção.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O texto de descrição da opção.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint.items_types">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">items_types</span></span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint.items_types" title="Link para esta definição"></a></dt>
+<dd><p>Retorna um conjunto com todos os sub tipos aceitos pela opção.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O set contendo os tipos.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>set[type]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint.max_value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">max_value</span></span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint.max_value" title="Link para esta definição"></a></dt>
+<dd><p>Retorna o numérico máximo aceito pela opção de configuração.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O valor máximo.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[Union[int, float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint.min_value">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">min_value</span></span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint.min_value" title="Link para esta definição"></a></dt>
+<dd><p>Retorna o numérico mínimo aceito pela opção de configuração.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O valor mínimo.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>Optional[Union[int, float]]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint.option">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">option</span></span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint.option" title="Link para esta definição"></a></dt>
+<dd><p>Retorna o nome da opção.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Onome da opção.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint.pattern">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pattern</span></span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint.pattern" title="Link para esta definição"></a></dt>
+<dd><p>Retorna o dicionário contendo os padrões de validação de strings,
+sendo a representação em string da documentação como chave e o
+re.Pattern como valor.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O dicionário de padrões.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict[str, re.Pattern]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint.required">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">required</span></span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint.required" title="Link para esta definição"></a></dt>
+<dd><p>Verifica se a opção é obrigatória. Ou seja, se a opção pode receber
+valores nulos (null/None) ou ficar em branco no arquivo de configuração.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Retorna True se a opção for obrigatória, caso contrário</dt><dd><p>retorna False.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint.section">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">section</span></span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint.section" title="Link para esta definição"></a></dt>
+<dd><p>Retorna o nome da seção.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O nome da seção.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint.types">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">types</span></span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint.types" title="Link para esta definição"></a></dt>
+<dd><p>Retorna um conjunto com todos os tipos aceitos pela opção.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Retorna<span class="colon">:</span></dt>
+<dd class="field-odd"><p>O set contendo os tipos.</p>
+</dd>
+<dt class="field-even">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-even"><p>set[type]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configblueprint.ConfigBlueprint.validate_value">
+<span class="sig-name descname"><span class="pre">validate_value</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configblueprint.ConfigBlueprint.validate_value" title="Link para esta definição"></a></dt>
+<dd><p>Valida o valor de acordo com as regras definidas no blueprint.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>value</strong> (<em>Any</em>) – O valor a ser validado.</p>
+</dd>
+<dt class="field-even">Retorna<span class="colon">:</span></dt>
+<dd class="field-even"><p>O próprio valor, sem alterações. O valor é retornado para
+facilitar a validação e atribuição em uma única operação.</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+<dt class="field-even">Levanta<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigFormatError" title="configcraft.configerrors.InvalidConfigFormatError"><strong>configerrors.InvalidConfigFormatError</strong></a> – Quando o valor não obedece
+    nenhum dos padrões regex.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigOutOfRangeError" title="configcraft.configerrors.ConfigOutOfRangeError"><strong>configerrors.ConfigOutOfRangeError</strong></a> – Quando o valor não está dentro
+    das regras de limite numéricos.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigTypeError" title="configcraft.configerrors.InvalidConfigTypeError"><strong>configerrors.InvalidConfigTypeError</strong></a> – Quando o tipo do valor não é
+    aceito pelo blueprint da opção.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Direitos autorais 2024, Leonardo Amaral. Sob a Licença MIT.</p>
+  </div>
+
+  Compilado com <a href="https://www.sphinx-doc.org/">Sphinx</a> usando um
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a>
+    fornecido por <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
