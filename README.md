@@ -25,6 +25,14 @@ Você pode instalar a versão mais recente do ConfigCraft usando o pip:
 pip install git+https://github.com/devleonardoamaral/ConfigCraft.git
 ```
 
+Ou, se preferir, uma versão específica do ConfigCraft:
+```bash
+pip install git+https://github.com/devleonardoamaral/ConfigCraft.git@{branch-name}
+```
+```bash
+pip install git+https://github.com/devleonardoamaral/ConfigCraft.git@{commit-hash}
+```
+
 ## Licença
 
 Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
