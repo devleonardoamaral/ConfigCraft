@@ -4,7 +4,7 @@ ConfigCraft é uma biblioteca Python para gerenciar arquivos de configuração d
 
 ## Funcionalidades
 
-- **Perfis de Configuração**Crie diferentes perfis de configuração e alterne entre eles facilmente apenas trocando o nome do perfil a ser carregado. Isso facilita a gestão de várias configurações em um único arquivo.
+- **Perfis de Configuração**: Crie diferentes perfis de configuração e alterne entre eles facilmente apenas trocando o nome do perfil a ser carregado. Isso facilita a gestão de várias configurações em um único arquivo.
   
 - **Documentação Automática**: A biblioteca gera automaticamente uma documentação sobre como preencher e utilizar cada opção de configuração. Isso ajuda o usuário final a compreender rapidamente como interagir com o arquivo de configuração.
 
