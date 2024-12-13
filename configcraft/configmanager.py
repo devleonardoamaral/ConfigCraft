@@ -153,7 +153,7 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
 
         Raises:
             Raises:
-            configerrors.InvalidValueTypeError: Se o valor não for compatível
+            configerrors.InvalidConfigTypeError: Se o valor não for compatível
                 com os tipos especificados em `types` ou `item_types` do
                 blueprint.
             configerrors.InvalidConfigFormatError: Se o valor não atender a
