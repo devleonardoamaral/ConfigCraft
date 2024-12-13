@@ -41,7 +41,7 @@ class ConfigBlueprint:
             como exemplos na documentação do arquivo de configuração.
 
     Raises:
-        configerrors.InvalidValueTypeError: Se o valor definido em `default`
+        configerrors.InvalidConfigTypeError: Se o valor definido em `default`
             não for compatível com os tipos especificados em `types` ou
             `item_types`.
         configerrors.InvalidConfigFormatError: Se o valor definido em `default`
