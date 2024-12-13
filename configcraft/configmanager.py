@@ -68,8 +68,7 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
             nova. O valor padrão é uma string vazia ("").
 
     Returns:
-        ConfigCraft: A instância de `ConfigCraft` correspondente ao nome
-            especificado.
+        A instância de `ConfigCraft` correspondente ao nome especificado.
     """
 
     _instances = {}
