@@ -33,9 +33,13 @@ pip install git+https://github.com/devleonardoamaral/ConfigCraft.git@{branch-nam
 pip install git+https://github.com/devleonardoamaral/ConfigCraft.git@{commit-hash}
 ```
 
+## Documentação
+
+[Clique aqui para acessar a documentação](https://devleonardoamaral.github.io/ConfigCraft/index.html)
+
 ## Licença
 
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
+Este projeto está licenciado sob a Licença MIT.
 
 ### Resumo da Licença MIT
 
@@ -44,6 +48,3 @@ A Licença MIT permite que qualquer pessoa use, copie, modifique, mescle, publiq
 O software é fornecido "como está", sem garantias de qualquer tipo, expressas ou implícitas, incluindo, mas não se limitando a, garantias de comercialização, adequação a um propósito específico e não violação. Em nenhum caso os autores ou detentores de direitos autorais serão responsáveis por qualquer reclamação, danos ou outra responsabilidade, seja em ação de contrato, torto ou de outra forma, decorrente de, ou em conexão com, o software ou o uso ou outras negociações no software.
 
 Se você tiver dúvidas ou quiser saber mais sobre os termos da licença, consulte o arquivo [LICENSE](./LICENSE).
-
-## Documentação
-[Clique aqui para acessar a documentação](https://devleonardoamaral.github.io/ConfigCraft/index.html)
