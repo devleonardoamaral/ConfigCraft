@@ -3,6 +3,7 @@ Este módulo fornece funções utilitárias. As funções deste módulo ão util
 por outros módulos para simplificar e garantir a consistência do código.
 """
 
+from abc import ABCMeta
 from typing import Union, Optional, Iterable, Any
 
 
@@ -125,3 +126,17 @@ def check_if_indexed_iterables_intersect(
     True
     """
     return bool(get_indexable_iterables_intersection(source, candidates))
+
+
+class PolySingleton(ABCMeta):
+    def __call__(cls, name: str = "", *args: Any, **kwargs: Any) -> Any:
+        validate_type(name, str, "name")
+
+        if not hasattr(cls, "_instances"):
+            cls._instances = {}
+
+        if name not in cls._instances:
+            instance = super().__call__(*args, **kwargs)
+            cls._instances[name] = instance
+
+        return cls._instances[name]

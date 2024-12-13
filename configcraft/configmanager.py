@@ -54,17 +54,8 @@ Armazena o texto padrão de como utilizar e preencher o arquivo de configuraçã
 """
 
 
-class ConfigCraft(MutableMapping):
+class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
     _instances = {}
-
-    def __call__(cls, name: str, *args, **kwargs):
-        configutils.validate_type(name, str, "name")
-
-        if name not in cls._instances:
-            instance = super().__call__(cls, *args, **kwargs)
-            cls._instances[name] = instance
-
-        return cls._instances[name]
 
     def __init__(self, *args, **kwargs):
         if hasattr(self, "_initialized"):
