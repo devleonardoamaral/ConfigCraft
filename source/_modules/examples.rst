@@ -16,10 +16,10 @@ instância do gerenciador será criada.
 
 .. code-block:: python
     
-    import configcraft
+    from configcraft import ConfigCraft, ConfigBlueprint
 
-    # Cria uma instância chamada "app"
-    cfg = configcraft.ConfigCraft("app")
+    # Cria uma instância chamada "app" no PolySingleton
+    cfg = ConfigCraft("app")
 
 2. Adicionando ConfigBlueprints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -43,7 +43,7 @@ No exemplo abaixo, mostramos como adicionar um *ConfigBlueprint* ao
 
     # Adiciona o blueprint ao gerenciador de configurações
     cfg.add_blueprint(
-        configcraft.ConfigBlueprint(
+        ConfigBlueprint(
             section="nome_seção",
             option="nome_opção",
             types={str, type(None)},  # type(None) torna a opção opcional

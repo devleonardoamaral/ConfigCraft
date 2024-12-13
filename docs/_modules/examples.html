@@ -75,10 +75,7 @@
 <li class="toctree-l2"><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigValueError"><code class="docutils literal notranslate"><span class="pre">InvalidConfigValueError</span></code></a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="license.html">Licença</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="license.html#resumo-da-licenca-mit">Resumo da Licença MIT</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">Licença</a></li>
 </ul>
 
         </div>
@@ -117,10 +114,10 @@ dado esperado, além de permitir valores padrão e descrições.</p>
 instância do <em>ConfigCraft</em>, uma vez que ele é implementado como um
 <em>PolySingleton</em>. Isso garante que, para cada nome fornecido, apenas uma
 instância do gerenciador será criada.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">configcraft</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">configcraft</span> <span class="kn">import</span> <span class="n">ConfigCraft</span><span class="p">,</span> <span class="n">ConfigBlueprint</span>
 
-<span class="c1"># Cria uma instância chamada &quot;app&quot;</span>
-<span class="n">cfg</span> <span class="o">=</span> <span class="n">configcraft</span><span class="o">.</span><span class="n">ConfigCraft</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">)</span>
+<span class="c1"># Cria uma instância chamada &quot;app&quot; no PolySingleton</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">ConfigCraft</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -142,7 +139,7 @@ padrão, entre outros parâmetros.</p>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adiciona o blueprint ao gerenciador de configurações</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">add_blueprint</span><span class="p">(</span>
-    <span class="n">configcraft</span><span class="o">.</span><span class="n">ConfigBlueprint</span><span class="p">(</span>
+    <span class="n">ConfigBlueprint</span><span class="p">(</span>
         <span class="n">section</span><span class="o">=</span><span class="s2">&quot;nome_seção&quot;</span><span class="p">,</span>
         <span class="n">option</span><span class="o">=</span><span class="s2">&quot;nome_opção&quot;</span><span class="p">,</span>
         <span class="n">types</span><span class="o">=</span><span class="p">{</span><span class="nb">str</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="kc">None</span><span class="p">)},</span>  <span class="c1"># type(None) torna a opção opcional</span>
