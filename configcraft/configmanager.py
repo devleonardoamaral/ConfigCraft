@@ -55,6 +55,23 @@ Armazena o texto padrão de como utilizar e preencher o arquivo de configuraçã
 
 
 class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
+    """Classe principal responsável por armazenar e gerenciar as opções de
+    configuração.
+
+    Implementa o padrão de projeto PolySingleton, permitindo criar ou
+    reutilizar uma instância existente com base em um nome de instância
+    especificado.
+
+    Args:
+        name (str, opcional): Nome da instância a ser retornada. Se uma
+            instância com o nome especificado não existir, será criada uma
+            nova. O valor padrão é uma string vazia ("").
+
+    Returns:
+        ConfigCraft: A instância de `ConfigCraft` correspondente ao nome
+            especificado.
+    """
+
     _instances = {}
 
     def __init__(self, *args, **kwargs):
@@ -136,12 +153,16 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
             value (Any): O novo valor a ser definido.
 
         Raises:
-            configerrors.InvalidConfigFormatError: Quando o valor não obedece
-                nenhum dos padrões regex.
-            configerrors.ConfigOutOfRangeError: Quando o valor não está dentro
-                das regras de limite numéricos.
-            configerrors.InvalidConfigTypeError: Quando o tipo do valor não é
-                aceito pelo blueprint da opção.
+            Raises:
+            configerrors.InvalidValueTypeError: Se o valor não for compatível
+                com os tipos especificados em `types` ou `item_types` do
+                blueprint.
+            configerrors.InvalidConfigFormatError: Se o valor não atender a
+                nenhum dos padrões regex especificados em `pattern` no
+                blueprint.
+            configerrors.ConfigOutOfRangeError: Se o valor estiver fora dos
+                limites especificados por `min_value` e/ou `max_value` no
+                blueprint.
             configerrors.ConfigSameFileError:
                 Levantada se o arquivo temporário e o arquivo de destino forem
                 o mesmo, o que indicaria uma falha na lógica de manipulação de
@@ -170,24 +191,28 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
         raise NotImplementedError("excluir itens não é permitido nesta classe")
 
     def __iter__(self):
-        """Retorna um iterador para percorrer as chaves de configuração, onde cada chave é uma tupla contendo o nome da
-        seção e o nome da opção correspondente.
+        """Retorna um iterador para percorrer as chaves de configuração, onde
+        cada chave é uma tupla contendo o nome da seção e o nome da opção
+        correspondente.
 
-        O iterador percorre todas as seções e suas respectivas opções, gerando tuplas no formato (seção, opção).
+        O iterador percorre todas as seções e suas respectivas opções, gerando
+            tuplas no formato (seção, opção).
 
         Yields:
             tuple[str, str]: Tupla contendo o nome da seção e o nome da opção.
 
         Returns:
-            Generator[tuple[str, str], None, None]: Gerador que itera sobre as tuplas de chaves de configuração.
+            Generator[tuple[str, str], None, None]: Gerador que itera sobre as
+                tuplas de chaves de configuração.
         """
         for section, options in self._data.items():
             for option in options:
                 yield section, option
 
     def __len__(self):
-        """Retorna o número total de opções de configuração em todas as seções. Este método conta quantas opções estão
-        disponíveis em cada seção e retorna a soma total delas.
+        """Retorna o número total de opções de configuração em todas as seções.
+        Este método conta quantas opções estão disponíveis em cada seção e
+        retorna a soma total delas.
 
         Returns:
             int: O número total de opções em todas as seções de configuração.
@@ -196,13 +221,15 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
 
     @property
     def path(self):
-        """Propriedade para acessar o caminho do arquivo de configuração do perfil inicializado atualmente. Não deve ser
-        chamado enquanto a instância não for inicializada com o método `initialize()`.
+        """Propriedade para acessar o caminho do arquivo de configuração do
+        perfil inicializado atualmente. Não deve ser chamado enquanto a
+        instância não for inicializada com o método `initialize`.
 
         Returns:
             Path: O caminho do arquivo de configuração.
         Raises:
-            RuntimeError: Ocorre quando a instância não é inicializada corretamente.
+            RuntimeError: Ocorre quando a instância não é inicializada
+                corretamente.
         """
         if self._path is None:
             error_message = (
@@ -214,20 +241,23 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
 
     @property
     def directory(self):
-        """Propriedade para acessar o caminho do diretório onde os perfis de configuração são armazenados. Não deve ser
-        chamado enquanto a instância não for inicializada com o método `initialize()`.
+        """Propriedade para acessar o caminho do diretório onde os perfis de
+        configuração são armazenados. Não deve ser chamado enquanto a instância
+        não for inicializada com o método `initialize`.
 
         Returns:
             Path: O caminho do diretório de perfis de configuração.
         Raises:
-            RuntimeError: Ocorre quando a instância não é inicializada corretamente.
+            RuntimeError: Ocorre quando a instância não é inicializada
+                corretamente.
         """
         return self.path.parent
 
     @property
     def profile(self):
-        """Propriedade para acessar o nome do perfil inicializado. Não deve ser chamado enquanto a instância não for
-        inicializada com o método `initialize()`.
+        """Propriedade para acessar o nome do perfil inicializado. Não deve ser
+        chamado enquanto a instância não for inicializada com o método
+        `initialize`.
 
         Returns:
             str: O nome do perfil atual.
@@ -238,8 +268,8 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
 
     @property
     def encoding(self):
-        """Propriedade para acessar o tipo de codificação que será utilizada em operações de leitura e escrita do
-        arquivo de configuração.
+        """Propriedade para acessar o tipo de codificação que será utilizada em
+        operações de leitura e escrita do arquivo de configuração.
 
         Returns:
             str: O nome do tipo de codificação.
@@ -248,7 +278,8 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
 
     @property
     def header(self):
-        """Propriedade para acessar o cabeçalho que é escrito na primeira linha nos arquivos de configuração.
+        """Propriedade para acessar o cabeçalho que é escrito na primeira linha
+        nos arquivos de configuração.
 
         Returns:
             str: O texto do cabeçalho.
@@ -257,9 +288,10 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
 
     @property
     def description(self):
-        """Propriedade para acessar o texto que é escrito logo abaixo do cabeçalho nos arquivos de configuração. Por
-        padrão é definido um texto explicativo de como preencher cada tipo de valor e como utilizar o arquivo de
-        configuração de forma simples e intuitiva.
+        """Propriedade para acessar o texto que é escrito logo abaixo do
+        cabeçalho nos arquivos de configuração. Por padrão é definido um texto
+        explicativo de como preencher cada tipo de valor e como utilizar o
+        arquivo de configuração de forma simples e intuitiva.
 
         Returns:
             str: O texto da descrição.
@@ -267,7 +299,8 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
         return self._description
 
     def set_description(self, value: str):
-        """Setter para alterar o texto que é escrito logo abaixo do cabeçalho nos arquivos de configuração.
+        """Setter para alterar o texto que é escrito logo abaixo do cabeçalho
+        nos arquivos de configuração.
 
         Args:
             value (str): O novo texto de descrição.
@@ -316,17 +349,46 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
     def initialize(
         self, profile: str, path: Union[Path, str], encoding: str = "utf_8"
     ):
-        """Inicializa o gerenciador de configurações.
+        """Inicializa o gerenciador de configurações e carrega as opções de
+        configuração, criando opções ausentes com seus valores padrão definidos
+        no blueprint.
+
+        Este método verifica se todas as opções definidas no blueprint estão
+        presentes no arquivo de configuração. Se houver opções ausentes, elas
+        serão criadas com os valores padrão especificados no blueprint. Caso o
+        diretório de configuração ou o arquivo de configuração não existam,
+        ambos serão criados do zero, e todas as opções serão definidas com seus
+        valores padrão do blueprint. O processo de leitura e escrita é feito de
+        forma segura, garantindo a integridade das configurações.
 
         Args:
-            profile (str): O nome do perfil que será utilizado pelo gerenciador de configurações.
-            path (Union[Path, str]): O diretório onde os perfis de configuração serão armazenados.
-            encoding (str): Codificação a ser utilizada nas operações de leitura e escrita do arquivo de configuração.
+            profile (str): O nome do perfil que será utilizado pelo gerenciador
+                de configurações. O nome do arquivo de configuração será o nome
+                do perfil com a extensão ".ini", não sendo necessário adicionar
+                a extensão ao nome.
+            path (Union[Path, str]): O diretório onde os perfis de configuração
+                serão armazenados.
+            encoding (str): Codificação a ser utilizada nas operações de
+                leitura e escrita do arquivo de configuração.
 
         Raises:
-            RuntimeError: Se não houver nenhum blueprint definido ou se o diretório de configuração não existir e não
-                puder ser criado.
-            ConfigFileError: Se houver falha ao carregar ou processar dados de configuração.
+            RuntimeError: Se não houver nenhum blueprint definido ou se o
+                diretório de configuração não existir e não puder ser criado.
+            configerrors.InvalidConfigError: Ocorre quando há valores inválidos
+                no arquivo de configuração.
+            configerrors.ConfigSameFileError: Ocorre ao tentar salvar
+                configurações atualizadas, se o arquivo temporário e o
+                arquivo de destino possuem o mesmo nome.
+            configerrors.ConfigIsADirectoryError: Ocorre ao tentar salvar
+                configurações atualizadas, se o caminho de destino é um
+                diretório em vez de um arquivo.
+            configerrors.ConfigFileNotFoundError: Ocorre quando o caminho de
+                destino não é encontrado ao salvar configurações atualizadas.
+            configerrors.ConfigFilePermissionError: Ocorre quando não há
+                permissões suficientes para acessar o arquivo de configuração
+                ou manipular o arquivo temporário gerado durante a escrita.
+            configerrors.ConfigFileError: Ocorre em caso de outras falhas ao
+                ler ou escrever as configurações no armazenamento físico.
         """
         configutils.validate_type(profile, str, "profile")
         configutils.validate_type(path, (Path, str), "path")
@@ -372,9 +434,10 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
         configuração.
 
         A lógica de salvamento delega a operação de escrita ao método
-        interno `_write_config`, que realiza a escrita atômica no arquivo de
-        configuração. Isso é feito utilizando um arquivo temporário, garantindo
-        maior segurança e evitando perda de dados em caso de falhas inesperadas.
+        interno `_write_config`, que realiza a escrita de forma atômica no
+        arquivo de configuração. Isso é feito utilizando um arquivo temporário,
+        garantindo maior segurança e evitando perda de dados em caso de falhas
+        inesperadas.
 
         Raises:
             configerrors.ConfigSameFileError:
@@ -407,7 +470,28 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
             self._write_config()
 
     def load_config(self):
-        """Lê o arquivo utilizando o Lock de threading para evitar que o arquivo seja sobrescrito durante a leitura."""
+        """Adquire o `threading.Lock` da instância através de um gerenciador de
+        contexto para evitar que o arquivo seja sobrescrito durante a leitura.
+        Em seguida, carrega e processa as configurações a partir do arquivo de
+        configuração. Cada opção é validada conforme os blueprints definidos.
+
+        Raises:
+            configerrors.InvalidConfigError: Ocorre quando há valores inválidos
+                no arquivo de configuração.
+            configerrors.ConfigSameFileError: Ocorre ao tentar salvar
+                configurações atualizadas, se o arquivo temporário e o
+                arquivo de destino possuem o mesmo nome.
+            configerrors.ConfigIsADirectoryError: Ocorre ao tentar salvar
+                configurações atualizadas, se o caminho de destino é um
+                diretório em vez de um arquivo.
+            configerrors.ConfigFileNotFoundError: Ocorre quando o caminho de
+                destino não é encontrado ao salvar configurações atualizadas.
+            configerrors.ConfigFilePermissionError: Ocorre quando não há
+                permissões suficientes para acessar o arquivo de configuração
+                ou manipular o arquivo temporário gerado durante a escrita.
+            configerrors.ConfigFileError: Ocorre em caso de outras falhas ao
+                ler ou escrever as configurações no armazenamento físico.
+        """
         with self._threading_lock:
             self._load_config()
 
@@ -418,7 +502,8 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
             blueprint (ConfigBlueprint): O blueprint a ser adicionado.
 
         Raises:
-            RuntimeError: Ocorre quando a instância já foi inicializada. É importante adicionar todos os blueprints
+            RuntimeError: Ocorre quando a instância já foi inicializada. É
+                importante adicionar todos os blueprints
                 antes da inicialização completa da instância.
         """
         configutils.validate_type(blueprint, ConfigBlueprint, "blueprint")
@@ -434,8 +519,9 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
         self._blueprints[blueprint.section][blueprint.option] = blueprint
 
     def has_blueprint_section(self, section: str) -> bool:
-        """Verifica se a seção fornecida está presente na estrutura interna de blueprints, retornando `True` se a seção
-        for encontrada, e `False` caso contrário.
+        """Verifica se a seção fornecida está presente na estrutura interna de
+        blueprints, retornando `True` se a seção for encontrada, e `False`
+        caso contrário.
 
         Args:
             section (str): O nome da seção a ser verificada nos blueprints.
@@ -605,35 +691,50 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
             )
 
     def _fetch_section_from_line(self, line: str):
-        """Retorna o nome da seção caso a linha corresponda com uma seção formatada como linha de arquivo de
-        configuração.
+        """
+        Verifica se uma linha corresponde a uma seção formatada como em um
+        arquivo de configuração e retorna o nome da seção.
 
         Args:
-            line (str): A string onde a seção será buscada.
+            line (str): A linha de texto onde será realizada a busca pela seção.
 
         Returns:
-            Optional[str]: Retorna o nome da seção, ou None caso não seja encontrado uma correspondência.
+            Optional[str]: O nome da seção se houver correspondência, ou
+                `None` caso contrário.
         """
+
         if match := re.match(r"^\[(.*)\]$", line):
             return match.group(1).strip()
         return None
 
     @staticmethod
     def _fetch_option_and_value_from_line(start_index: int, lines: list[str]):
-        """Percorre as linhas da lista de linhas iniciando no ídice especificado e retorna uma tupla contendo o nome e o
-        valor da opção caso seja encontrada uma correspondência. É retornado imediatamente a partir da primeira
-        ocorrência ou se for encontrado um padrão de seção ou comentário, indicando que a procura chegou ao final do
-        escopo onde a opção-valor deveriam estar definidos. É retornado uma tupla contendo dois itens com valor None
-        caso não haja nenhuma correspondência.
+        """
+        Percorre uma lista de linhas a partir de um índice especificado e
+        retorna uma tupla contendo o nome e o valor da opção, caso encontrada.
+
+        A busca é encerrada imediatamente após encontrar a primeira
+        correspondência válida, um padrão de seção ou um comentário, indicando
+        que o escopo da opção-valor chegou ao fim. Se nenhuma correspondência
+        for encontrada, é retornada uma tupla
+        contendo dois valores `None`.
 
         Args:
-            index (int): o índice onde deve ser iniciada a procura na lista de linhas, linhas anteriores ao índice
-                especificado serão ignoradas.
-            lines (list[str]): linhas onde será procurado o nome da opção e o valor.
+            index (int): O índice inicial para a busca na lista de linhas.
+                Linhas anteriores ao índice serão ignoradas.
+            lines (list[str]): A lista de linhas onde será realizada a busca
+                pelo nome da opção e seu valor.
+
+        Returns:
+            tuple[Optional[str], Optional[str]]: Uma tupla com o nome e o valor
+                da opção, ou `(None, None)` se nenhuma correspondência for
+                encontrada.
 
         Raises:
-            configerrors.InvalidConfigError: Quando não é possível decodificar o dado definido no valor da opção.
+            configerrors.InvalidConfigError: Ocorre quando o valor da opção
+                não pode ser decodificado corretamente.
         """
+
         value_parts = []
         option = None
         value = None
@@ -675,10 +776,13 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
         return option, value
 
     def _fix_missing_data(self):
-        """Preenche valores de configuração ausentes com os valores padrão definidos nos blueprints.
+        """Preenche valores de configuração ausentes com os valores padrão
+        definidos nos blueprints.
 
-        Este método verifica as seções e opções de configuração armazenadas e compara com os blueprints definidos.
-        Caso encontre uma configuração ausente, a preenche com o valor padrão correspondente do blueprint.
+        Este método verifica as seções e opções de configuração armazenadas e
+        compara com os blueprints definidos.
+        Caso encontre uma configuração ausente, a preenche com o valor padrão
+        correspondente do blueprint.
         """
         for blueprint_section, options in self._blueprints.items():
             if blueprint_section not in self._data:
@@ -692,18 +796,20 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
 
     def _read_file_lines(self):
         """
-        Lê todas as linhas de um arquivo de texto e retorna uma lista contendo as linhas lidas.
-
-        Este método encapsula a lógica de leitura de um arquivo e inclui tratamento de exceções para lidar com
-        problemas comuns como arquivo inexistente ou permissões insuficientes.
+        Lê todas as linhas de um arquivo de texto e retorna uma lista com as
+        linhas lidas.
 
         Returns:
-            list[str]: As linhas do arquivo como uma lista de strings. Se o arquivo não existir, retorna uma lista vazia.
+            list[str]: Uma lista de strings representando as linhas do arquivo.
+            Caso o arquivo não exista, retorna uma lista vazia.
 
         Raises:
-            configerrors.ConfigFilePermissionError: Quando não há permissões suficientes para acessar o arquivo.
-            configerrors.ConfigFileError: Para outros erros inesperados.
+            configerrors.ConfigFilePermissionError: Ocorre quando não há
+                permissões suficientes para acessar o arquivo.
+            configerrors.ConfigFileError: Ocorre para outros erros relacionados
+                ao sistema operacional durante a leitura do arquivo.
         """
+
         path_str = str(self.path)
 
         try:
@@ -724,19 +830,25 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
             )
 
     def _process_config_data(self, lines: list[str]):
-        """Processa as linhas de configuração, interpretando seções, opções e valores.
+        """Processa as linhas do arquivo de configuração, interpretando seções,
+        opções e valores.
 
-        Este método valida as opções de acordo com os blueprints e aplica os valores padrões
-        quando necessário. Ele também ignora seções e opções que não estão definidas nos blueprints.
+        Este método valida as opções com base nos blueprints definidos e
+        aplica os valores padrão em caso de ausência de valor ou opção. Seções
+        e opções não definidas nos blueprints são ignoradas.
 
-        Em caso de falha, as configurações serão restauradas para o estado anterior.
+        As modificações nos dados são realizadas de forma atômica. Em caso de
+        falha, as configurações serão restauradas para o estado anterior.
 
         Args:
-            lines (list[str]): Linhas do arquivo de configuração.
+            lines (list[str]): Lista de linhas do arquivo de configuração a
+                serem processadas.
 
         Raises:
-            configerrors.InvalidConfigError: Erro ao processar dados do arquivo de configuração.
+            configerrors.InvalidConfigError: Ocorre ao detectar erros ao
+                processar os dados do arquivo de configuração.
         """
+
         path_str = str(self.path)
         backup = self._data.copy()
         self._data: dict[str, dict[str, Any]] = {}
@@ -791,40 +903,26 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
             )
 
     def _load_config(self):
-        """Carrega e processa as configurações armazenadas no arquivo de configuração, validando e corrigindo valores
-        com base nos blueprints.
-
-        Este método realiza as seguintes etapas:
-        1. Lê o arquivo de configuração no caminho especificado na instância do gerenciador de configurações.
-        2. Processa cada linha do arquivo, identificando seções e opções com valores associados.
-        3. Valida os valores encontrados de acordo com as regras definidas nos blueprints.
-        4. Preenche valores ausentes com os valores padrão definidos nos blueprints.
-        5. Atualiza o arquivo de configuração com as mudanças realizadas (se houver).
-
-        Em caso de falha no carregamento, processamento ou atualização do arquivo de configuração, o estado anterior das
-        configurações é restaurado e uma exceção `ConfigError` é lançada. Durante o processo, mensagens de log detalhadas
-        são registradas para fornecer visibilidade sobre o que foi feito e onde ocorreram falhas.
+        """
+        Carrega e processa as configurações armazenadas no arquivo de configuração.
+        Cada opção é validada com base nos blueprints definidos.
 
         Raises:
-            configerrors.ConfigFileError: Se houver falha ao ler ou escrever no arquivo de configuração.
-            configerrors.InvalidConfigError: Se houver falha ao processar ou atualizar o arquivo de configuração.
+            configerrors.InvalidConfigError: Ocorre quando há valores inválidos
+                no arquivo de configuração.
+            configerrors.ConfigSameFileError: Ocorre ao tentar salvar
+                configurações atualizadas, se o arquivo temporário e o
+                arquivo de destino possuem o mesmo nome.
+            configerrors.ConfigIsADirectoryError: Ocorre ao tentar salvar
+                configurações atualizadas, se o caminho de destino é um
+                diretório em vez de um arquivo.
+            configerrors.ConfigFileNotFoundError: Ocorre quando o caminho de
+                destino não é encontrado ao salvar configurações atualizadas.
+            configerrors.ConfigFilePermissionError: Ocorre quando não há
+                permissões suficientes para acessar o arquivo de configuração
+                ou manipular o arquivo temporário gerado durante a escrita.
+            configerrors.ConfigFileError: Ocorre em caso de outras falhas ao
+                ler ou escrever as configurações no armazenamento físico.
         """
-        path_str = str(self.path)
-
-        try:
-            lines = self._read_file_lines()
-        except configerrors.ConfigFileError:
-            raise
-
-        try:
-            self._process_config_data(lines)
-        except Exception as e:
-            raise configerrors.InvalidConfigError(e)
-
-        try:
-            self._write_config()
-        except Exception as e:
-            raise configerrors.ConfigFileError(
-                "erro ao atualizar o arquivo de configuração"
-                f" {path_str!r}: {e}"
-            )
+        self._process_config_data(self._read_file_lines())
+        self._write_config()

@@ -14,8 +14,42 @@ from . import configformatters
 
 
 class ConfigBlueprint:
-    """Classe responsável por definir a estrutura de cada opção de configuração
-    e realizar validações sobre os valores passados para essas opções"""
+    """
+    Classe responsável por definir a estrutura de cada opção de configuração e
+    realizar validações sobre os valores fornecidos.
+
+    Args:
+        section (str): Nome da seção à qual a opção pertence.
+        option (str): Nome da opção.
+        types (Union[set[type], type]): Conjunto de tipos aceitos pela opção.
+            Este conjunto será usado para validar os valores atribuídos.
+        description (str): Descrição da opção, a ser incluída na documentação
+            do arquivo de configuração. Deve ser uma breve explicação do
+            propósito da opção.
+        default (Any): Valor padrão da opção. Deve ser compatível com os tipos
+            especificados em `types` e, se aplicável, em `item_types`.
+        item_types (Optional[Union[set[type], type]]): Conjunto de tipos aceitos
+            para os itens internos de coleções como listas ou dicionários,
+            caso aplicável.
+        min_value (Optional[Union[int, float]]): Valor mínimo permitido para a
+            opção, se for um número.
+        max_value (Optional[Union[int, float]]): Valor máximo permitido para a
+            opção, se for um número.
+        pattern (Optional[dict[str, Union[re.Pattern, str]]]): Dicionário de
+            padrões regex usados para validar valores do tipo string.
+            As chaves devem descrever o padrão de forma humanizada, servindo
+            como exemplos na documentação do arquivo de configuração.
+
+    Raises:
+        configerrors.InvalidValueTypeError: Se o valor definido em `default`
+            não for compatível com os tipos especificados em `types` ou
+            `item_types`.
+        configerrors.InvalidConfigFormatError: Se o valor definido em `default`
+            não atender a nenhum dos padrões regex especificados em `pattern`.
+        configerrors.ConfigOutOfRangeError: Se o valor definido em `default`
+            estiver fora dos limites especificados por `min_value` e/ou
+            `max_value`.
+    """
 
     _SUPPORTED_PRIMITIVE_TYPES: Final[set[type]] = {
         str,
@@ -106,8 +140,7 @@ class ConfigBlueprint:
         self._min_value: Optional[Union[int, float]] = min_value
         self._max_value: Optional[Union[int, float]] = max_value
 
-        self._validate_value_type(self.default)
-        self._validate_value_format(self.default)
+        self.validate_value(self.default)
 
     @property
     def section(self):
@@ -214,12 +247,15 @@ class ConfigBlueprint:
             facilitar a validação e atribuição em uma única operação.
 
         Raises:
-            configerrors.InvalidConfigFormatError: Quando o valor não obedece
-                nenhum dos padrões regex.
-            configerrors.ConfigOutOfRangeError: Quando o valor não está dentro
-                das regras de limite numéricos.
-            configerrors.InvalidConfigTypeError: Quando o tipo do valor não é
-                aceito pelo blueprint da opção.
+            configerrors.InvalidValueTypeError: Se o valor definido em
+                `default` não for compatível com os tipos especificados em
+                `types` ou `item_types`.
+            configerrors.InvalidConfigFormatError: Se o valor definido em
+                `default` não atender a nenhum dos padrões regex especificados
+                em `pattern`.
+            configerrors.ConfigOutOfRangeError: Se o valor definido em
+                `default` estiver fora dos limites especificados por
+                `min_value` e/ou `max_value`.
         """
         self._validate_value_type(value)
         self._validate_value_format(value)
