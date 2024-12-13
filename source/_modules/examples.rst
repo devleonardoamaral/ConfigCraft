@@ -86,14 +86,14 @@ o segundo o nome da opção.
 .. code-block:: python
 
     # Acessa o valor da opção e imprime na tela
-    print(cfg["nome_seção", "nome_opção"]) 
+    print(cfg.get_option("nome_seção", "nome_opção")) 
     # Saída: 'Valor de Exemplo'
 
     # Altera o valor da opção
-    cfg["nome_seção", "nome_opção"] = "Novo Valor"
+    cfg.set_option("nome_seção", "nome_opção", "Novo Valor")
 
     # Acessa o valor da opção e imprime na tela
-    print(cfg["nome_seção", "nome_opção"]) 
+    print(cfg.get_option("nome_seção", "nome_opção"))  
     # Saída: 'Novo Valor'
 
 5. Arquivo de configuração 

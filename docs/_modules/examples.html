@@ -181,14 +181,14 @@ das opções configuradas. As opções podem ser manipuladas como se fossem chav
 de um dicionário através de uma tupla, sendo o primeiro valor o nome da seção e
 o segundo o nome da opção.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Acessa o valor da opção e imprime na tela</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;nome_seção&quot;</span><span class="p">,</span> <span class="s2">&quot;nome_opção&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;nome_seção&quot;</span><span class="p">,</span> <span class="s2">&quot;nome_opção&quot;</span><span class="p">))</span>
 <span class="c1"># Saída: &#39;Valor de Exemplo&#39;</span>
 
 <span class="c1"># Altera o valor da opção</span>
-<span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;nome_seção&quot;</span><span class="p">,</span> <span class="s2">&quot;nome_opção&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Novo Valor&quot;</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s2">&quot;nome_seção&quot;</span><span class="p">,</span> <span class="s2">&quot;nome_opção&quot;</span><span class="p">,</span> <span class="s2">&quot;Novo Valor&quot;</span><span class="p">)</span>
 
 <span class="c1"># Acessa o valor da opção e imprime na tela</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="p">[</span><span class="s2">&quot;nome_seção&quot;</span><span class="p">,</span> <span class="s2">&quot;nome_opção&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get_option</span><span class="p">(</span><span class="s2">&quot;nome_seção&quot;</span><span class="p">,</span> <span class="s2">&quot;nome_opção&quot;</span><span class="p">))</span>
 <span class="c1"># Saída: &#39;Novo Valor&#39;</span>
 </pre></div>
 </div>

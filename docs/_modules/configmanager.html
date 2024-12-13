@@ -109,7 +109,7 @@
 <span id="configcraft-configmanager"></span><h1>configcraft.configmanager<a class="headerlink" href="#module-configcraft.configmanager" title="Link para este cabeçalho"></a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configmanager.</span></span><span class="sig-name descname"><span class="pre">ConfigCraft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft" title="Link para esta definição"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configmanager.</span></span><span class="sig-name descname"><span class="pre">ConfigCraft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft" title="Link para esta definição"></a></dt>
 <dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutableMapping</span></code></p>
 <dl class="py method">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.add_blueprint">
@@ -218,6 +218,29 @@ definida.</p>
 </dd>
 <dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
 <dd class="field-odd"><p>Optional[dict]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.get_option">
+<span class="sig-name descname"><span class="pre">get_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.get_option" title="Link para esta definição"></a></dt>
+<dd><p>Obtém o valor de uma opção específica em uma determinada seção.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>section</strong> (<em>str</em>) – O nome da seção à qual a opção pertence.</p></li>
+<li><p><strong>option</strong> (<em>str</em>) – O nome da opção cujo valor será retornado.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Retorna<span class="colon">:</span></dt>
+<dd class="field-even"><p>O valor associado à opção especificada.</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Any</p>
+</dd>
+<dt class="field-even">Levanta<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>KeyError</strong> – Se a seção ou a opção fornecida não existirem.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -387,6 +410,47 @@ maior segurança e evitando perda de dados em caso de falhas inesperadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – O novo texto de descrição.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.set_option">
+<span class="sig-name descname"><span class="pre">set_option</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">option</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.set_option" title="Link para esta definição"></a></dt>
+<dd><p>Atualiza o valor de uma opção específica em uma determinada seção.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>section</strong> (<em>str</em>) – O nome da seção à qual a opção pertence.</p></li>
+<li><p><strong>option</strong> (<em>str</em>) – O nome da opção cujo valor será atualizado.</p></li>
+<li><p><strong>value</strong> (<em>Any</em>) – O novo valor a ser definido.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Levanta<span class="colon">:</span></dt>
+<dd class="field-even"><ul class="simple">
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigFormatError" title="configcraft.configerrors.InvalidConfigFormatError"><strong>configerrors.InvalidConfigFormatError</strong></a> – Quando o valor não obedece
+    nenhum dos padrões regex.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigOutOfRangeError" title="configcraft.configerrors.ConfigOutOfRangeError"><strong>configerrors.ConfigOutOfRangeError</strong></a> – Quando o valor não está dentro
+    das regras de limite numéricos.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigTypeError" title="configcraft.configerrors.InvalidConfigTypeError"><strong>configerrors.InvalidConfigTypeError</strong></a> – Quando o tipo do valor não é
+    aceito pelo blueprint da opção.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigSameFileError" title="configcraft.configerrors.ConfigSameFileError"><strong>configerrors.ConfigSameFileError</strong></a> – Levantada se o arquivo temporário e o arquivo de destino forem
+    o mesmo, o que indicaria uma falha na lógica de manipulação de
+    arquivos temporários.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigIsADirectoryError" title="configcraft.configerrors.ConfigIsADirectoryError"><strong>configerrors.ConfigIsADirectoryError</strong></a> – Levantada se o caminho especificado para o arquivo de
+    configuração for um diretório ao invés de um arquivo,
+    impossibilitando a escrita.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileNotFoundError" title="configcraft.configerrors.ConfigFileNotFoundError"><strong>configerrors.ConfigFileNotFoundError</strong></a> – Levantada quando o caminho especificado para o arquivo de
+    configuração não é encontrado, indicando que o caminho de
+    destino ainda não existe.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFilePermissionError" title="configcraft.configerrors.ConfigFilePermissionError"><strong>configerrors.ConfigFilePermissionError</strong></a> – Levantada quando a aplicação não possui permissões suficientes
+    para escrever no arquivo ou substituir o arquivo de
+    configuração existente.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileError" title="configcraft.configerrors.ConfigFileError"><strong>configerrors.ConfigFileError</strong></a> – Levantada para qualquer outro erro inesperado ocorrido durante
+    a escrita no arquivo, permitindo uma abordagem genérica para
+    tratamento de erros fora dos cenários comuns. As execeções
+    específicias citadas acima herdam de <em>ConfigFileError</em>.</p></li>
+</ul>
 </dd>
 </dl>
 </dd></dl>
