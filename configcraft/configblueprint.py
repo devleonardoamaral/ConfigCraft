@@ -30,11 +30,11 @@ class ConfigBlueprint:
         self,
         section: str,
         option: str,
-        types: set[type],
+        types: Union[set[type], type],
         description: str = "",
         default: Any = None,
         *,
-        items_types: set[type] = None,
+        items_types: Optional[Union[set[type], type]] = None,
         min_value: Optional[Union[int, float]] = None,
         max_value: Optional[Union[int, float]] = None,
         pattern: dict[str, Union[re.Pattern, str]] = None,
@@ -42,16 +42,21 @@ class ConfigBlueprint:
         configutils.validate_type(section, str, "section")
         configutils.validate_type(option, str, "option")
         configutils.validate_type(description, str, "description")
-        configutils.validate_type(types, set, "types")
+        configutils.validate_type(types, (set, type), "types")
+
+        if isinstance(types, type):
+            types = {types}
 
         for t in types:
             configutils.validate_type(t, type, "tipo em types")
 
         configutils.validate_type(
-            items_types, (set, type(None)), "items_types"
+            items_types, (set, type(None), type), "items_types"
         )
 
-        if items_types is not None:
+        if isinstance(items_types, type):
+            items_types = {items_types}
+        elif items_types is not None:
             for t in items_types:
                 configutils.validate_type(
                     t, type, "um dos valores de items_types"
