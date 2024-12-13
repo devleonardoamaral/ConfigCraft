@@ -81,6 +81,22 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
                 f"a opção {option!r} da seção {section!r} não existe."
             )
 
+    def get_option(self, section: str, option: str):
+        """
+        Obtém o valor de uma opção específica em uma determinada seção.
+
+        Args:
+            section (str): O nome da seção à qual a opção pertence.
+            option (str): O nome da opção cujo valor será retornado.
+
+        Returns:
+            Any: O valor associado à opção especificada.
+
+        Raises:
+            KeyError: Se a seção ou a opção fornecida não existirem.
+        """
+        return self[section, option]
+
     def __setitem__(self, key: tuple[str, str], value: Any):
         configutils.validate_type(key, tuple, "key")
         section, option = key
@@ -110,6 +126,45 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
                 f" configuração da opção {option!r} da seção {section!r}."
                 f" Erro: {e}"
             )
+
+    def set_option(self, section: str, option: str, value: Any):
+        """Atualiza o valor de uma opção específica em uma determinada seção.
+
+        Args:
+            section (str): O nome da seção à qual a opção pertence.
+            option (str): O nome da opção cujo valor será atualizado.
+            value (Any): O novo valor a ser definido.
+
+        Raises:
+            configerrors.InvalidConfigFormatError: Quando o valor não obedece
+                nenhum dos padrões regex.
+            configerrors.ConfigOutOfRangeError: Quando o valor não está dentro
+                das regras de limite numéricos.
+            configerrors.InvalidConfigTypeError: Quando o tipo do valor não é
+                aceito pelo blueprint da opção.
+            configerrors.ConfigSameFileError:
+                Levantada se o arquivo temporário e o arquivo de destino forem
+                o mesmo, o que indicaria uma falha na lógica de manipulação de
+                arquivos temporários.
+            configerrors.ConfigIsADirectoryError:
+                Levantada se o caminho especificado para o arquivo de
+                configuração for um diretório ao invés de um arquivo,
+                impossibilitando a escrita.
+            configerrors.ConfigFileNotFoundError:
+                Levantada quando o caminho especificado para o arquivo de
+                configuração não é encontrado, indicando que o caminho de
+                destino ainda não existe.
+            configerrors.ConfigFilePermissionError:
+                Levantada quando a aplicação não possui permissões suficientes
+                para escrever no arquivo ou substituir o arquivo de
+                configuração existente.
+            configerrors.ConfigFileError:
+                Levantada para qualquer outro erro inesperado ocorrido durante
+                a escrita no arquivo, permitindo uma abordagem genérica para
+                tratamento de erros fora dos cenários comuns. As execeções
+                específicias citadas acima herdam de *ConfigFileError*.
+        """
+        self[section, option] = value
 
     def __delitem__(self, key: tuple[str, str]) -> None:
         raise NotImplementedError("excluir itens não é permitido nesta classe")
