@@ -45,7 +45,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
               <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Começando</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#instanciando-o-configmanager">1. Instanciando o ConfigManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#instanciando-o-configcraft">1. Instanciando o ConfigCraft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#adicionando-configblueprints">2. Adicionando ConfigBlueprints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#inicializando-o-gerenciador">3. Inicializando o gerenciador</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#manipulando-valores-das-opcoes">4. Manipulando valores das opções</a></li>
@@ -54,7 +54,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Instalação</a></li>
 <li class="toctree-l1"><a class="reference internal" href="configmanager.html">configcraft.configmanager</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="configmanager.html#configcraft.configmanager.ConfigManager"><code class="docutils literal notranslate"><span class="pre">ConfigManager</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="configmanager.html#configcraft.configmanager.ConfigCraft"><code class="docutils literal notranslate"><span class="pre">ConfigCraft</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="configblueprint.html">configcraft.configblueprint</a><ul>
@@ -107,32 +107,32 @@
              
   <section id="comecando">
 <h1>Começando<a class="headerlink" href="#comecando" title="Link para este cabeçalho"></a></h1>
-<p>Este exemplo demonstra como usar o <em>ConfigManager</em> do módulo <em>configcraft</em> para
+<p>Este exemplo demonstra como usar o <em>ConfigCraft</em> do módulo <em>configcraft</em> para
 gerenciar configurações. O código abaixo mostra como adicionar uma
 <em>ConfigBlueprint</em> de configuração, que define uma seção, uma opção e o tipo de
 dado esperado, além de permitir valores padrão e descrições.</p>
-<section id="instanciando-o-configmanager">
-<h2>1. Instanciando o ConfigManager<a class="headerlink" href="#instanciando-o-configmanager" title="Link para este cabeçalho"></a></h2>
+<section id="instanciando-o-configcraft">
+<h2>1. Instanciando o ConfigCraft<a class="headerlink" href="#instanciando-o-configcraft" title="Link para este cabeçalho"></a></h2>
 <p>Para instanciar o gerenciador de configurações, é necessário atribuir um nome à
-instância do <em>ConfigManager</em>, uma vez que ele é implementado como um
+instância do <em>ConfigCraft</em>, uma vez que ele é implementado como um
 <em>PolySingleton</em>. Isso garante que, para cada nome fornecido, apenas uma
 instância do gerenciador será criada.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">configcraft</span>
 
 <span class="c1"># Cria uma instância chamada &quot;app&quot;</span>
-<span class="n">cfg</span> <span class="o">=</span> <span class="n">configcraft</span><span class="o">.</span><span class="n">ConfigManager</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">)</span>
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">configcraft</span><span class="o">.</span><span class="n">ConfigCraft</span><span class="p">(</span><span class="s2">&quot;app&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="adicionando-configblueprints">
 <h2>2. Adicionando ConfigBlueprints<a class="headerlink" href="#adicionando-configblueprints" title="Link para este cabeçalho"></a></h2>
-<p>Depois de instanciar o <em>ConfigManager</em>, o próximo passo é adicionar um
+<p>Depois de instanciar o <em>ConfigCraft</em>, o próximo passo é adicionar um
 <em>ConfigBlueprint</em> à ele. Um <em>ConfigBlueprint</em> define as opções de configuração
 que serão usadas no gerenciador, incluindo a seção, a opção específica dentro
 dessa seção, os tipos de dados esperados, uma descrição da opção e um valor
 padrão, entre outros parâmetros.</p>
 <p>No exemplo abaixo, mostramos como adicionar um <em>ConfigBlueprint</em> ao
-<em>ConfigManager</em>, onde:</p>
+<em>ConfigCraft</em>, onde:</p>
 <ul class="simple">
 <li><p><strong>section</strong>: Define o nome da seção onde a opção será armazenada.</p></li>
 <li><p><strong>option</strong>: Define o nome da opção dentro da seção.</p></li>
@@ -166,7 +166,7 @@ os valores padrão definidos, caso o arquivo ainda não exista.</p>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>O ConfigManager irá procurar pelo arquivo “dev.ini” dentro do diretório
+<p>O ConfigCraft irá procurar pelo arquivo “dev.ini” dentro do diretório
 “./config”.</p>
 <ul class="simple">
 <li><p><strong>Caso seja encontrado:</strong> as configurações são carregadas com a codificação “utf_8” e validados através dos blueprints.</p></li>
@@ -247,7 +247,7 @@ diretório de destino “./config”.</p>
 <p class="admonition-title">Nota</p>
 <p>O texto padrão de documentação padrão após o cabeçalho do arquivo de
 configuração pode ser alterado através do método <em>set_description</em> no
-ConfigManager.</p>
+ConfigCraft.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cfg</span><span class="o">.</span><span class="n">set_description</span><span class="p">(</span><span class="s2">&quot;Nova descrição&quot;</span><span class="p">)</span>
 </pre></div>
 </div>

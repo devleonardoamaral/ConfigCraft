@@ -1,16 +1,16 @@
 Começando
 =========
 
-Este exemplo demonstra como usar o *ConfigManager* do módulo *configcraft* para 
+Este exemplo demonstra como usar o *ConfigCraft* do módulo *configcraft* para 
 gerenciar configurações. O código abaixo mostra como adicionar uma 
 *ConfigBlueprint* de configuração, que define uma seção, uma opção e o tipo de 
 dado esperado, além de permitir valores padrão e descrições.
 
-1. Instanciando o ConfigManager
+1. Instanciando o ConfigCraft
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Para instanciar o gerenciador de configurações, é necessário atribuir um nome à 
-instância do *ConfigManager*, uma vez que ele é implementado como um 
+instância do *ConfigCraft*, uma vez que ele é implementado como um 
 *PolySingleton*. Isso garante que, para cada nome fornecido, apenas uma 
 instância do gerenciador será criada.
 
@@ -19,19 +19,19 @@ instância do gerenciador será criada.
     import configcraft
 
     # Cria uma instância chamada "app"
-    cfg = configcraft.ConfigManager("app")
+    cfg = configcraft.ConfigCraft("app")
 
 2. Adicionando ConfigBlueprints
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Depois de instanciar o *ConfigManager*, o próximo passo é adicionar um 
+Depois de instanciar o *ConfigCraft*, o próximo passo é adicionar um 
 *ConfigBlueprint* à ele. Um *ConfigBlueprint* define as opções de configuração 
 que serão usadas no gerenciador, incluindo a seção, a opção específica dentro 
 dessa seção, os tipos de dados esperados, uma descrição da opção e um valor 
 padrão, entre outros parâmetros.
 
 No exemplo abaixo, mostramos como adicionar um *ConfigBlueprint* ao 
-*ConfigManager*, onde:
+*ConfigCraft*, onde:
 
 - **section**: Define o nome da seção onde a opção será armazenada.
 - **option**: Define o nome da opção dentro da seção.
@@ -69,7 +69,7 @@ os valores padrão definidos, caso o arquivo ainda não exista.
     cfg.initialize("dev", "config", encoding="utf_8")
 
 .. note::
-    O ConfigManager irá procurar pelo arquivo "dev.ini" dentro do diretório 
+    O ConfigCraft irá procurar pelo arquivo "dev.ini" dentro do diretório 
     "./config".
 
     - **Caso seja encontrado:** as configurações são carregadas com a codificação "utf_8" e validados através dos blueprints.
@@ -153,7 +153,7 @@ diretório de destino "./config".
 
     O texto padrão de documentação padrão após o cabeçalho do arquivo de 
     configuração pode ser alterado através do método *set_description* no 
-    ConfigManager.
+    ConfigCraft.
 
     .. code-block:: python
 

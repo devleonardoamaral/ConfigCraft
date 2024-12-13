@@ -42,7 +42,7 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="_modules/examples.html">Começando</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="_modules/examples.html#instanciando-o-configmanager">1. Instanciando o ConfigManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="_modules/examples.html#instanciando-o-configcraft">1. Instanciando o ConfigCraft</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_modules/examples.html#adicionando-configblueprints">2. Adicionando ConfigBlueprints</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_modules/examples.html#inicializando-o-gerenciador">3. Inicializando o gerenciador</a></li>
 <li class="toctree-l2"><a class="reference internal" href="_modules/examples.html#manipulando-valores-das-opcoes">4. Manipulando valores das opções</a></li>
@@ -51,7 +51,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_modules/installation.html">Instalação</a></li>
 <li class="toctree-l1"><a class="reference internal" href="_modules/configmanager.html">configcraft.configmanager</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="_modules/configmanager.html#configcraft.configmanager.ConfigManager"><code class="docutils literal notranslate"><span class="pre">ConfigManager</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft"><code class="docutils literal notranslate"><span class="pre">ConfigCraft</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="_modules/configblueprint.html">configcraft.configblueprint</a><ul>
@@ -125,7 +125,7 @@
 <h2 id="A">A</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.add_blueprint">add_blueprint() (método configcraft.configmanager.ConfigManager)</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.add_blueprint">add_blueprint() (método configcraft.configmanager.ConfigCraft)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -134,6 +134,8 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_modules/configblueprint.html#configcraft.configblueprint.ConfigBlueprint">ConfigBlueprint (classe em configcraft.configblueprint)</a>
+</li>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft">ConfigCraft (classe em configcraft.configmanager)</a>
 </li>
       <li>
     configcraft.configblueprint
@@ -168,8 +170,6 @@
 </li>
       <li><a href="_modules/configerrors.html#configcraft.configerrors.ConfigIsADirectoryError">ConfigIsADirectoryError</a>
 </li>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager">ConfigManager (classe em configcraft.configmanager)</a>
-</li>
       <li><a href="_modules/configerrors.html#configcraft.configerrors.ConfigOutOfRangeError">ConfigOutOfRangeError</a>
 </li>
       <li><a href="_modules/configerrors.html#configcraft.configerrors.ConfigSameFileError">ConfigSameFileError</a>
@@ -185,12 +185,12 @@
       <li><a href="_modules/configblueprint.html#configcraft.configblueprint.ConfigBlueprint.description">description (propriedade configcraft.configblueprint.ConfigBlueprint )</a>
 
       <ul>
-        <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.description">(propriedade configcraft.configmanager.ConfigManager )</a>
+        <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.description">(propriedade configcraft.configmanager.ConfigCraft )</a>
 </li>
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.directory">directory (propriedade configcraft.configmanager.ConfigManager )</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.directory">directory (propriedade configcraft.configmanager.ConfigCraft )</a>
 </li>
   </ul></td>
 </tr></table>
@@ -198,7 +198,7 @@
 <h2 id="E">E</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.encoding">encoding (propriedade configcraft.configmanager.ConfigManager )</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.encoding">encoding (propriedade configcraft.configmanager.ConfigCraft )</a>
 </li>
   </ul></td>
 </tr></table>
@@ -206,11 +206,11 @@
 <h2 id="G">G</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.get_blueprint">get_blueprint() (método configcraft.configmanager.ConfigManager)</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.get_blueprint">get_blueprint() (método configcraft.configmanager.ConfigCraft)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.get_blueprint_options">get_blueprint_options() (método configcraft.configmanager.ConfigManager)</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.get_blueprint_options">get_blueprint_options() (método configcraft.configmanager.ConfigCraft)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -218,13 +218,13 @@
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.has_blueprint_option">has_blueprint_option() (método configcraft.configmanager.ConfigManager)</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.has_blueprint_option">has_blueprint_option() (método configcraft.configmanager.ConfigCraft)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.has_blueprint_section">has_blueprint_section() (método configcraft.configmanager.ConfigManager)</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.has_blueprint_section">has_blueprint_section() (método configcraft.configmanager.ConfigCraft)</a>
 </li>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.header">header (propriedade configcraft.configmanager.ConfigManager )</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.header">header (propriedade configcraft.configmanager.ConfigCraft )</a>
 </li>
   </ul></td>
 </tr></table>
@@ -232,7 +232,7 @@
 <h2 id="I">I</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.initialize">initialize() (método configcraft.configmanager.ConfigManager)</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.initialize">initialize() (método configcraft.configmanager.ConfigCraft)</a>
 </li>
       <li><a href="_modules/configerrors.html#configcraft.configerrors.InvalidConfigError">InvalidConfigError</a>
 </li>
@@ -252,7 +252,7 @@
 <h2 id="L">L</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.load_config">load_config() (método configcraft.configmanager.ConfigManager)</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.load_config">load_config() (método configcraft.configmanager.ConfigCraft)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -289,13 +289,13 @@
 <h2 id="P">P</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.path">path (propriedade configcraft.configmanager.ConfigManager )</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.path">path (propriedade configcraft.configmanager.ConfigCraft )</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_modules/configblueprint.html#configcraft.configblueprint.ConfigBlueprint.pattern">pattern (propriedade configcraft.configblueprint.ConfigBlueprint )</a>
 </li>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.profile">profile (propriedade configcraft.configmanager.ConfigManager )</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.profile">profile (propriedade configcraft.configmanager.ConfigCraft )</a>
 </li>
   </ul></td>
 </tr></table>
@@ -311,13 +311,13 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.save_config">save_config() (método configcraft.configmanager.ConfigManager)</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.save_config">save_config() (método configcraft.configmanager.ConfigCraft)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="_modules/configblueprint.html#configcraft.configblueprint.ConfigBlueprint.section">section (propriedade configcraft.configblueprint.ConfigBlueprint )</a>
 </li>
-      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigManager.set_description">set_description() (método configcraft.configmanager.ConfigManager)</a>
+      <li><a href="_modules/configmanager.html#configcraft.configmanager.ConfigCraft.set_description">set_description() (método configcraft.configmanager.ConfigCraft)</a>
 </li>
   </ul></td>
 </tr></table>
