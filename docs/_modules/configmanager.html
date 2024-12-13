@@ -108,6 +108,28 @@
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">configcraft.configmanager.</span></span><span class="sig-name descname"><span class="pre">ConfigCraft</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft" title="Link para esta definição"></a></dt>
 <dd><p>Base: <code class="xref py py-class docutils literal notranslate"><span class="pre">MutableMapping</span></code></p>
+<p>Classe principal responsável por armazenar e gerenciar as opções de
+configuração.</p>
+<p>Implementa o padrão de projeto PolySingleton, permitindo criar ou
+reutilizar uma instância existente com base em um nome de instância
+especificado.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em><em>, </em><em>opcional</em>) – Nome da instância a ser retornada. Se uma
+instância com o nome especificado não existir, será criada uma
+nova. O valor padrão é uma string vazia (“”).</p>
+</dd>
+<dt class="field-even">Retorna<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>A instância de <cite>ConfigCraft</cite> correspondente ao nome</dt><dd><p>especificado.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Tipo de retorno<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#configcraft.configmanager.ConfigCraft" title="configcraft.configmanager.ConfigCraft">ConfigCraft</a></p>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.add_blueprint">
 <span class="sig-name descname"><span class="pre">add_blueprint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">blueprint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="configblueprint.html#configcraft.configblueprint.ConfigBlueprint" title="configcraft.configblueprint.ConfigBlueprint"><span class="pre">ConfigBlueprint</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.add_blueprint" title="Link para esta definição"></a></dt>
@@ -117,7 +139,8 @@
 <dd class="field-odd"><p><strong>blueprint</strong> (<a class="reference internal" href="configblueprint.html#configcraft.configblueprint.ConfigBlueprint" title="configcraft.configblueprint.ConfigBlueprint"><em>ConfigBlueprint</em></a>) – O blueprint a ser adicionado.</p>
 </dd>
 <dt class="field-even">Levanta<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>RuntimeError</strong> – Ocorre quando a instância já foi inicializada. É importante adicionar todos os blueprints
+<dd class="field-even"><p><strong>RuntimeError</strong> – Ocorre quando a instância já foi inicializada. É
+    importante adicionar todos os blueprints
     antes da inicialização completa da instância.</p>
 </dd>
 </dl>
@@ -126,9 +149,10 @@
 <dl class="py property">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.description">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.description" title="Link para esta definição"></a></dt>
-<dd><p>Propriedade para acessar o texto que é escrito logo abaixo do cabeçalho nos arquivos de configuração. Por
-padrão é definido um texto explicativo de como preencher cada tipo de valor e como utilizar o arquivo de
-configuração de forma simples e intuitiva.</p>
+<dd><p>Propriedade para acessar o texto que é escrito logo abaixo do
+cabeçalho nos arquivos de configuração. Por padrão é definido um texto
+explicativo de como preencher cada tipo de valor e como utilizar o
+arquivo de configuração de forma simples e intuitiva.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Retorna<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O texto da descrição.</p>
@@ -142,8 +166,9 @@ configuração de forma simples e intuitiva.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.directory">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">directory</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.directory" title="Link para esta definição"></a></dt>
-<dd><p>Propriedade para acessar o caminho do diretório onde os perfis de configuração são armazenados. Não deve ser
-chamado enquanto a instância não for inicializada com o método <cite>initialize()</cite>.</p>
+<dd><p>Propriedade para acessar o caminho do diretório onde os perfis de
+configuração são armazenados. Não deve ser chamado enquanto a instância
+não for inicializada com o método <cite>initialize</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Retorna<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O caminho do diretório de perfis de configuração.</p>
@@ -152,7 +177,8 @@ chamado enquanto a instância não for inicializada com o método <cite>initiali
 <dd class="field-even"><p>Path</p>
 </dd>
 <dt class="field-odd">Levanta<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>RuntimeError</strong> – Ocorre quando a instância não é inicializada corretamente.</p>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – Ocorre quando a instância não é inicializada
+    corretamente.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -160,8 +186,8 @@ chamado enquanto a instância não for inicializada com o método <cite>initiali
 <dl class="py property">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.encoding">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">encoding</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.encoding" title="Link para esta definição"></a></dt>
-<dd><p>Propriedade para acessar o tipo de codificação que será utilizada em operações de leitura e escrita do
-arquivo de configuração.</p>
+<dd><p>Propriedade para acessar o tipo de codificação que será utilizada em
+operações de leitura e escrita do arquivo de configuração.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Retorna<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O nome do tipo de codificação.</p>
@@ -270,8 +296,9 @@ for encontrada na seção, <cite>False</cite> se a seção existir mas a opção
 <dl class="py method">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.has_blueprint_section">
 <span class="sig-name descname"><span class="pre">has_blueprint_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">section</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.has_blueprint_section" title="Link para esta definição"></a></dt>
-<dd><p>Verifica se a seção fornecida está presente na estrutura interna de blueprints, retornando <cite>True</cite> se a seção
-for encontrada, e <cite>False</cite> caso contrário.</p>
+<dd><p>Verifica se a seção fornecida está presente na estrutura interna de
+blueprints, retornando <cite>True</cite> se a seção for encontrada, e <cite>False</cite>
+caso contrário.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>section</strong> (<em>str</em>) – O nome da seção a ser verificada nos blueprints.</p>
@@ -288,7 +315,8 @@ for encontrada, e <cite>False</cite> caso contrário.</p>
 <dl class="py property">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.header">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">header</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.header" title="Link para esta definição"></a></dt>
-<dd><p>Propriedade para acessar o cabeçalho que é escrito na primeira linha nos arquivos de configuração.</p>
+<dd><p>Propriedade para acessar o cabeçalho que é escrito na primeira linha
+nos arquivos de configuração.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Retorna<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O texto do cabeçalho.</p>
@@ -302,20 +330,48 @@ for encontrada, e <cite>False</cite> caso contrário.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.initialize">
 <span class="sig-name descname"><span class="pre">initialize</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">profile</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Path</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">encoding</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'utf_8'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.initialize" title="Link para esta definição"></a></dt>
-<dd><p>Inicializa o gerenciador de configurações.</p>
+<dd><p>Inicializa o gerenciador de configurações e carrega as opções de
+configuração, criando opções ausentes com seus valores padrão definidos
+no blueprint.</p>
+<p>Este método verifica se todas as opções definidas no blueprint estão
+presentes no arquivo de configuração. Se houver opções ausentes, elas
+serão criadas com os valores padrão especificados no blueprint. Caso o
+diretório de configuração ou o arquivo de configuração não existam,
+ambos serão criados do zero, e todas as opções serão definidas com seus
+valores padrão do blueprint. O processo de leitura e escrita é feito de
+forma segura, garantindo a integridade das configurações.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>profile</strong> (<em>str</em>) – O nome do perfil que será utilizado pelo gerenciador de configurações.</p></li>
-<li><p><strong>path</strong> (<em>Union</em><em>[</em><em>Path</em><em>, </em><em>str</em><em>]</em>) – O diretório onde os perfis de configuração serão armazenados.</p></li>
-<li><p><strong>encoding</strong> (<em>str</em>) – Codificação a ser utilizada nas operações de leitura e escrita do arquivo de configuração.</p></li>
+<li><p><strong>profile</strong> (<em>str</em>) – O nome do perfil que será utilizado pelo gerenciador
+de configurações. O nome do arquivo de configuração será o nome
+do perfil com a extensão “.ini”, não sendo necessário adicionar
+a extensão ao nome.</p></li>
+<li><p><strong>path</strong> (<em>Union</em><em>[</em><em>Path</em><em>, </em><em>str</em><em>]</em>) – O diretório onde os perfis de configuração
+serão armazenados.</p></li>
+<li><p><strong>encoding</strong> (<em>str</em>) – Codificação a ser utilizada nas operações de
+leitura e escrita do arquivo de configuração.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Levanta<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><strong>RuntimeError</strong> – Se não houver nenhum blueprint definido ou se o diretório de configuração não existir e não
-    puder ser criado.</p></li>
-<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileError" title="configcraft.configerrors.ConfigFileError"><strong>ConfigFileError</strong></a> – Se houver falha ao carregar ou processar dados de configuração.</p></li>
+<li><p><strong>RuntimeError</strong> – Se não houver nenhum blueprint definido ou se o
+    diretório de configuração não existir e não puder ser criado.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigError" title="configcraft.configerrors.InvalidConfigError"><strong>configerrors.InvalidConfigError</strong></a> – Ocorre quando há valores inválidos
+    no arquivo de configuração.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigSameFileError" title="configcraft.configerrors.ConfigSameFileError"><strong>configerrors.ConfigSameFileError</strong></a> – Ocorre ao tentar salvar
+    configurações atualizadas, se o arquivo temporário e o
+    arquivo de destino possuem o mesmo nome.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigIsADirectoryError" title="configcraft.configerrors.ConfigIsADirectoryError"><strong>configerrors.ConfigIsADirectoryError</strong></a> – Ocorre ao tentar salvar
+    configurações atualizadas, se o caminho de destino é um
+    diretório em vez de um arquivo.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileNotFoundError" title="configcraft.configerrors.ConfigFileNotFoundError"><strong>configerrors.ConfigFileNotFoundError</strong></a> – Ocorre quando o caminho de
+    destino não é encontrado ao salvar configurações atualizadas.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFilePermissionError" title="configcraft.configerrors.ConfigFilePermissionError"><strong>configerrors.ConfigFilePermissionError</strong></a> – Ocorre quando não há
+    permissões suficientes para acessar o arquivo de configuração
+    ou manipular o arquivo temporário gerado durante a escrita.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileError" title="configcraft.configerrors.ConfigFileError"><strong>configerrors.ConfigFileError</strong></a> – Ocorre em caso de outras falhas ao
+    ler ou escrever as configurações no armazenamento físico.</p></li>
 </ul>
 </dd>
 </dl>
@@ -324,14 +380,39 @@ for encontrada, e <cite>False</cite> caso contrário.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.load_config">
 <span class="sig-name descname"><span class="pre">load_config</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.load_config" title="Link para esta definição"></a></dt>
-<dd><p>Lê o arquivo utilizando o Lock de threading para evitar que o arquivo seja sobrescrito durante a leitura.</p>
+<dd><p>Adquire o <cite>threading.Lock</cite> da instância através de um gerenciador de
+contexto para evitar que o arquivo seja sobrescrito durante a leitura.
+Em seguida, carrega e processa as configurações a partir do arquivo de
+configuração. Cada opção é validada conforme os blueprints definidos.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Levanta<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigError" title="configcraft.configerrors.InvalidConfigError"><strong>configerrors.InvalidConfigError</strong></a> – Ocorre quando há valores inválidos
+    no arquivo de configuração.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigSameFileError" title="configcraft.configerrors.ConfigSameFileError"><strong>configerrors.ConfigSameFileError</strong></a> – Ocorre ao tentar salvar
+    configurações atualizadas, se o arquivo temporário e o
+    arquivo de destino possuem o mesmo nome.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigIsADirectoryError" title="configcraft.configerrors.ConfigIsADirectoryError"><strong>configerrors.ConfigIsADirectoryError</strong></a> – Ocorre ao tentar salvar
+    configurações atualizadas, se o caminho de destino é um
+    diretório em vez de um arquivo.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileNotFoundError" title="configcraft.configerrors.ConfigFileNotFoundError"><strong>configerrors.ConfigFileNotFoundError</strong></a> – Ocorre quando o caminho de
+    destino não é encontrado ao salvar configurações atualizadas.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFilePermissionError" title="configcraft.configerrors.ConfigFilePermissionError"><strong>configerrors.ConfigFilePermissionError</strong></a> – Ocorre quando não há
+    permissões suficientes para acessar o arquivo de configuração
+    ou manipular o arquivo temporário gerado durante a escrita.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigFileError" title="configcraft.configerrors.ConfigFileError"><strong>configerrors.ConfigFileError</strong></a> – Ocorre em caso de outras falhas ao
+    ler ou escrever as configurações no armazenamento físico.</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py property">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.path">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.path" title="Link para esta definição"></a></dt>
-<dd><p>Propriedade para acessar o caminho do arquivo de configuração do perfil inicializado atualmente. Não deve ser
-chamado enquanto a instância não for inicializada com o método <cite>initialize()</cite>.</p>
+<dd><p>Propriedade para acessar o caminho do arquivo de configuração do
+perfil inicializado atualmente. Não deve ser chamado enquanto a
+instância não for inicializada com o método <cite>initialize</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Retorna<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O caminho do arquivo de configuração.</p>
@@ -340,7 +421,8 @@ chamado enquanto a instância não for inicializada com o método <cite>initiali
 <dd class="field-even"><p>Path</p>
 </dd>
 <dt class="field-odd">Levanta<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>RuntimeError</strong> – Ocorre quando a instância não é inicializada corretamente.</p>
+<dd class="field-odd"><p><strong>RuntimeError</strong> – Ocorre quando a instância não é inicializada
+    corretamente.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -348,8 +430,9 @@ chamado enquanto a instância não for inicializada com o método <cite>initiali
 <dl class="py property">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.profile">
 <em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">profile</span></span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.profile" title="Link para esta definição"></a></dt>
-<dd><p>Propriedade para acessar o nome do perfil inicializado. Não deve ser chamado enquanto a instância não for
-inicializada com o método <cite>initialize()</cite>.</p>
+<dd><p>Propriedade para acessar o nome do perfil inicializado. Não deve ser
+chamado enquanto a instância não for inicializada com o método
+<cite>initialize</cite>.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Retorna<span class="colon">:</span></dt>
 <dd class="field-odd"><p>O nome do perfil atual.</p>
@@ -373,9 +456,10 @@ apenas uma thread possa executar a operação de salvamento por vez,
 evitando condições de corrida que possam corromper o arquivo de
 configuração.</p>
 <p>A lógica de salvamento delega a operação de escrita ao método
-interno <cite>_write_config</cite>, que realiza a escrita atômica no arquivo de
-configuração. Isso é feito utilizando um arquivo temporário, garantindo
-maior segurança e evitando perda de dados em caso de falhas inesperadas.</p>
+interno <cite>_write_config</cite>, que realiza a escrita de forma atômica no
+arquivo de configuração. Isso é feito utilizando um arquivo temporário,
+garantindo maior segurança e evitando perda de dados em caso de falhas
+inesperadas.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Levanta<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -403,7 +487,8 @@ maior segurança e evitando perda de dados em caso de falhas inesperadas.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="configcraft.configmanager.ConfigCraft.set_description">
 <span class="sig-name descname"><span class="pre">set_description</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#configcraft.configmanager.ConfigCraft.set_description" title="Link para esta definição"></a></dt>
-<dd><p>Setter para alterar o texto que é escrito logo abaixo do cabeçalho nos arquivos de configuração.</p>
+<dd><p>Setter para alterar o texto que é escrito logo abaixo do cabeçalho
+nos arquivos de configuração.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parâmetros<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>value</strong> (<em>str</em>) – O novo texto de descrição.</p>
@@ -425,12 +510,16 @@ maior segurança e evitando perda de dados em caso de falhas inesperadas.</p>
 </dd>
 <dt class="field-even">Levanta<span class="colon">:</span></dt>
 <dd class="field-even"><ul class="simple">
-<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigFormatError" title="configcraft.configerrors.InvalidConfigFormatError"><strong>configerrors.InvalidConfigFormatError</strong></a> – Quando o valor não obedece
-    nenhum dos padrões regex.</p></li>
-<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigOutOfRangeError" title="configcraft.configerrors.ConfigOutOfRangeError"><strong>configerrors.ConfigOutOfRangeError</strong></a> – Quando o valor não está dentro
-    das regras de limite numéricos.</p></li>
-<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigTypeError" title="configcraft.configerrors.InvalidConfigTypeError"><strong>configerrors.InvalidConfigTypeError</strong></a> – Quando o tipo do valor não é
-    aceito pelo blueprint da opção.</p></li>
+<li><p><strong>Raises</strong> – </p></li>
+<li><p><strong>configerrors.InvalidValueTypeError</strong> – Se o valor não for compatível
+    com os tipos especificados em <cite>types</cite> ou <cite>item_types</cite> do
+    blueprint.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.InvalidConfigFormatError" title="configcraft.configerrors.InvalidConfigFormatError"><strong>configerrors.InvalidConfigFormatError</strong></a> – Se o valor não atender a
+    nenhum dos padrões regex especificados em <cite>pattern</cite> no
+    blueprint.</p></li>
+<li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigOutOfRangeError" title="configcraft.configerrors.ConfigOutOfRangeError"><strong>configerrors.ConfigOutOfRangeError</strong></a> – Se o valor estiver fora dos
+    limites especificados por <cite>min_value</cite> e/ou <cite>max_value</cite> no
+    blueprint.</p></li>
 <li><p><a class="reference internal" href="configerrors.html#configcraft.configerrors.ConfigSameFileError" title="configcraft.configerrors.ConfigSameFileError"><strong>configerrors.ConfigSameFileError</strong></a> – Levantada se o arquivo temporário e o arquivo de destino forem
     o mesmo, o que indicaria uma falha na lógica de manipulação de
     arquivos temporários.</p></li>
