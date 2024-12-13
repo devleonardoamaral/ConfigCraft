@@ -46,4 +46,4 @@ O software é fornecido "como está", sem garantias de qualquer tipo, expressas 
 Se você tiver dúvidas ou quiser saber mais sobre os termos da licença, consulte o arquivo [LICENSE](./LICENSE).
 
 ## Documentação
-[Clique aqui para acessar a documentação](./docs/doc/index.html)
+[Clique aqui para acessar a documentação](https://devleonardoamaral.github.io/ConfigCraft/index.html)
