@@ -670,6 +670,7 @@ class ConfigCraft(MutableMapping, metaclass=configutils.PolySingleton):
                         f" temporário {tempf.name!r}: {e}"
                     )
                 finally:
+                    tempf.close()
                     Path(tempf.name).unlink(missing_ok=True)
 
         except configerrors.ConfigFileError:
